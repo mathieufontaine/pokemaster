@@ -1,0 +1,38 @@
+
+<div class= "container">
+<h1><strong>#</strong><%=@pokemon.id%>. <%= @pokemon.name %></h1>
+
+
+<table class="table">
+    <tbody>
+        <tr>
+          <th>Type</th>
+            <td><%=@pokemon.type.name%></td>
+        </tr>
+        <tr>
+          <th>Location</th>
+            <td><%=@pokemon.location%></td>
+        </tr>
+        <tr>
+          <th>Height</th>
+            <td><%=@pokemon.height%> m </td>
+        </tr>
+        <tr>
+          <th>Weight</th>
+            <td><%=@pokemon.weight%> kg </td>
+        </tr>
+          <th>Evolution</th>
+            <td>Yes</td>
+        </tr>
+    </tbody>
+</table>
+	<div class= "d-flex align-items-center">
+		<p><%= link_to edit_pokemon_path(@pokemon.id), class: 'btn btn-primary' do %>
+		<i class="fa fa-pencil"></i> Edit<% end %></p>
+
+		<p><%= link_to "Remove", pokemon_path(@pokemon.id), method: :delete, data: { confirm: "remove #{@pokemon.name}?" }, class: 'btn btn-danger'%></p>
+
+		 <p><%= link_to 'Go Back', pokemons_path, class: "btn btn-info" %></p>
+	 </div>
+</div>
+

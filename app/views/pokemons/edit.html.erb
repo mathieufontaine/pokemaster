@@ -1,0 +1,11 @@
+<div class="container">
+
+<h1>Update <%= @pokemon.name %></h1>
+
+<%= render 'form', pokemon: @pokemon %>
+
+<hr>
+<%= link_to pokemons_path do %>
+  <i class="fa fa-history"></i> Back to list
+<% end %>
+</div>
