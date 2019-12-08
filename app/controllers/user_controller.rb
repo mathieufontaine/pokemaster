@@ -9,7 +9,6 @@ class UserController::PokemonsController < ApplicationController
   end
 
   def destroy
-    @pokemon = current_user.pokemon
     @pokemon.destroy
     redirect_to pokemons_path(@pokemon), notice: 'pokemon was successfully removed from your Pokédex'
   end
