@@ -1,4 +1,4 @@
-class UserController::PokemonsController < ApplicationController
+class UsersController::PokemonsController < ApplicationController
   before_action :set_pokemon, only: [:show, :destroy]
 
   def index

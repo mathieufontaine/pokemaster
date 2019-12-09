@@ -1,4 +1,4 @@
-class TeamController < ApplicationController
+class TeamsController < ApplicationController
   before_action :set_my_pokedex, only: [:show, :edit, :update, :destroy]
 
 
@@ -22,6 +22,7 @@ class TeamController < ApplicationController
 
   def show
     @team = Team.find_by(id: params[:id])
+    @my_team_pokemons = @team.pokemons.all
   end
 
   def edit
