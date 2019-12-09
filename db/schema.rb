@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_102351) do
+ActiveRecord::Schema.define(version: 2019_12_09_162941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,15 +25,16 @@ ActiveRecord::Schema.define(version: 2019_12_09_102351) do
     t.index ["type_id"], name: "index_attacks_on_type_id"
   end
 
-  create_table "my_pokedexes", force: :cascade do |t|
+  create_table "pokedexes", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_my_pokedexes_on_user_id"
+    t.string "name"
+    t.index ["user_id"], name: "index_pokedexes_on_user_id"
   end
 
-  create_table "pokemon_my_pokedexes", force: :cascade do |t|
-    t.integer "my_pokedex_id"
+  create_table "pokemon_pokedexes", force: :cascade do |t|
+    t.integer "pokedex_id"
     t.integer "pokemon_id"
   end
 
@@ -67,6 +68,9 @@ ActiveRecord::Schema.define(version: 2019_12_09_102351) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "role", default: "user"
+    t.string "username"
+    t.string "avatar"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -77,7 +81,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_102351) do
   end
 
   add_foreign_key "attacks", "types"
-  add_foreign_key "my_pokedexes", "users"
+  add_foreign_key "pokedexes", "users"
   add_foreign_key "pokemons", "types"
   add_foreign_key "teams", "users"
 end

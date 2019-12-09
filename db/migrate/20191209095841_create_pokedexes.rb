@@ -1,6 +1,6 @@
-class CreateMyPokedexes < ActiveRecord::Migration[5.2]
+class CreatePokedexes < ActiveRecord::Migration[5.2]
   def change
-    create_table :my_pokedexes do |t|
+    create_table :pokedexes do |t|
     	
     	t.references :user, foreign_key: true
 
