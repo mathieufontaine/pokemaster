@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_08_191842) do
+ActiveRecord::Schema.define(version: 2019_12_09_102351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attacks", force: :cascade do |t|
+    t.string "name"
+    t.integer "power"
+    t.integer "precision"
+    t.bigint "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type_id"], name: "index_attacks_on_type_id"
+  end
+
+  create_table "my_pokedexes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_my_pokedexes_on_user_id"
+  end
+
+  create_table "pokemon_my_pokedexes", force: :cascade do |t|
+    t.integer "my_pokedex_id"
+    t.integer "pokemon_id"
+  end
 
   create_table "pokemons", force: :cascade do |t|
     t.string "name"
@@ -27,6 +49,13 @@ ActiveRecord::Schema.define(version: 2019_12_08_191842) do
     t.integer "number"
     t.boolean "caught", default: false
     t.index ["type_id"], name: "index_pokemons_on_type_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -47,5 +76,8 @@ ActiveRecord::Schema.define(version: 2019_12_08_191842) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attacks", "types"
+  add_foreign_key "my_pokedexes", "users"
   add_foreign_key "pokemons", "types"
+  add_foreign_key "teams", "users"
 end
