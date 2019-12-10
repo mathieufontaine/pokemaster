@@ -1,1 +1,22 @@
-show.html.erb
+
+<div class= "container">
+<h1><strong>#</strong><%=@pokedex.id%>. <%= @pokedex.name %></h1>
+
+
+<table class="table">
+    <tbody>
+        <tr>
+          <th>Type</th>
+            <td><%=@pokedex.name%></td>
+    </tbody>
+</table>
+	<div class= "d-flex align-items-center">
+		<p><%= link_to edit_pokedex_path(@pokedex.id), class: 'btn btn-primary' do %>
+		<i class="fa fa-pencil"></i> Edit<% end %></p>
+
+		<p><%= link_to "Remove", pokedex_path(@pokedex.id), method: :delete, data: { confirm: "remove #{@pokedex.name}?" }, class: 'btn btn-danger'%></p>
+
+		 <p><%= link_to 'Go Back', pokedexes_path, class: "btn btn-info" %></p>
+	 </div>
+</div>
+

@@ -8,10 +8,10 @@ Rails.application.routes.draw do
 
   resources :pokemons, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
-  resources :pokedexes, only: [:show, :new, :create]
+  resources :pokedexes, only: [:index, :show, :new, :create]
 
   namespace :trainer do
-    resources :pokedexes, only: [:show, :new, :create, :edit, :update, :destroy]
+    resources :pokedexes, only: [:show, :edit, :update, :destroy]
     resources :teams
   end
 

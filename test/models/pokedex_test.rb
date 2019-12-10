@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MyPokedexTest < ActiveSupport::TestCase
+class PokedexTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

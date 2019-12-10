@@ -8,11 +8,11 @@ class Trainer::PokedexesController < ApplicationController
   end
 
   def edit
-    @trainer = Trainer.find_by_id(@pokedex.trainer_id)
+    # @trainer = Trainer.find_by_id(@pokedex.trainer_id)
   end
 
   def update
-    @trainer = Trainer.find_by_id(@pokedex.trainer_id)
+    # @trainer = Trainer.find_by_id(@pokedex.trainer_id)
       if @pokedex.update(pokedex_params)
         redirect_to trainer_pokedex_path(@trainer, @pokedex)
       else
@@ -28,13 +28,13 @@ class Trainer::PokedexesController < ApplicationController
 
   private
 
-  def set_trainer
-    @trainer = Trainer.find_by(id: params[:trainer_id])
-  end
+  # def set_trainer
+  #   @trainer = Trainer.find_by(id: params[:trainer_id])
+  # end
 
   def set_pokedex
-    @pokedex = MyPokedex.find_by(id: params[:id])
-    authorize @team
+    @pokedex = Pokedex.find_by(id: params[:id])
+    # authorize @team
   end
 
   def pokedex_params

@@ -27,12 +27,12 @@ class Trainer::TeamsController < ApplicationController
 
   def edit
     @team = Team.find_by(id: params[:id])
-    @pokedex = MyPokedex.find_by_id(@team.pokedex_id)
+    @pokedex = Pokedex.find_by_id(@team.pokedex_id)
   end
 
   def update
     @team = Team.find_by(id: params[:id])
-    @pokedex = MyPokedex.find_by_id(@team.pokedex_id)
+    @pokedex = Pokedex.find_by_id(@team.pokedex_id)
       if @team.update(team_params)
         redirect_to pokedex_team_path(@pokedex, @team)
       else
@@ -49,7 +49,7 @@ class Trainer::TeamsController < ApplicationController
   private
 
   def set_pokedex
-    @pokedex = MyPokedex.find_by(id: params[:pokedex_id])
+    @pokedex = Pokedex.find_by(id: params[:pokedex_id])
   end
 
   def team_params

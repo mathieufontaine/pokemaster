@@ -1,5 +1,5 @@
 class PokedexesController < ApplicationController
-   before_action :set_trainer, only: [:show]
+   # before_action :set_trainer, only: [:show]
    before_action :set_pokedex, only: [:show]
    skip_before_action :authenticate_user!, only: [:index]
 
@@ -13,36 +13,37 @@ class PokedexesController < ApplicationController
 
   def new
     @pokedex = Pokedex.new
-    # authorize @pokedex
+    authorize @pokedex
 
   end
 
   def create
     @pokedex = Pokedex.new(pokedex_params)
     @pokedex.user = current_user
-    # authorize @pokedex
+
+    authorize @pokedex
     if @pokedex.save
-    	current_user.role = 'trainer'
-    	current_user.save
+      current_user.role = 'trainer'
+      current_user.save
       redirect_to trainer_pokedex_path(@pokedex), notice: 'Gotcha! Your Pokédex was successfully created'
     else
-      render 'new'
+      render :new
     end
   end
 
   def show
-    @pokedex = Pokedex.find_by(id: params[:id])
+    @pokedex = Pokedex.find(params[:id])
     @pokemons = @pokedex.pokemons.all
   end
 
 
   private
 
-  def set_trainer
-    @trainer = Trainer.find_by(id: params[:trainer_id])
-  end
+  # def set_trainer
+  #   @trainer = Trainer.find_by(id: params[:trainer_id])
+  # end
 
   def pokedex_params
-    params.require(:pokedex).permit(:name, :trainer_id)
+    params.require(:pokedex).permit(:name, :user_id)
   end
 end

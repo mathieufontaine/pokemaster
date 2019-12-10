@@ -3,7 +3,7 @@ class PokemonsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @pokemons = Pokemon.all
+    @pokemons = policy_scope(Pokemon)
   end
 
   def show
