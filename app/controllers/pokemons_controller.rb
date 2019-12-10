@@ -1,6 +1,7 @@
 class PokemonsController < ApplicationController
   before_action :set_pokemon, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :skip_authorization
 
   def index
     @pokemons = policy_scope(Pokemon)
@@ -11,6 +12,7 @@ class PokemonsController < ApplicationController
 
   def new
     @pokemon = Pokemon.new
+    # authorize @pokedex
   end
 
   def create

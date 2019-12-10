@@ -4,14 +4,39 @@
 
 
 <table class="table">
-    <tbody>
-        <tr>
-          <th>Type</th>
-            <td><%=@pokedex.name%></td>
-    </tbody>
+	<thead class="thead-dark"  id = "sticky-header">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Pokemon</th>
+    <th scope="col">Type</th>
+    <th scope="col">Location</th>  
+    <th scope="col">Height</th>
+    <th scope="col">Weight</th>
+    <th scope="col">Add to my Pokédex</th>
+  </tr>
+</thead>
+  <% @pokemons.each do |pokemon| %>
+    <tr>
+      <th scope="row"><%=pokemon.id%></th>
+      <td><%= link_to pokemon.name, pokemon_path(pokemon.id) %></td>
+      <td><%=pokemon.type.name%></td>
+      <td><%=pokemon.location%></td>
+      <td ><%=pokemon.height%> m </td>
+      <td ><%=pokemon.weight%> kg</td>
+      <td >
+      <div class="checkbox">
+        <%= form_for(pokemon) do |f| %>
+        <label>
+          <%= f.check_box :caught %> caught
+        </label>
+           <% end %>
+      	</td>
+    </tr>
+  <%end%>
 </table>
+
 	<div class= "d-flex align-items-center">
-		<p><%= link_to edit_pokedex_path(@pokedex.id), class: 'btn btn-primary' do %>
+		<p><%= link_to edit_trainer_pokedex_path(@pokedex.id), class: 'btn btn-primary' do %>
 		<i class="fa fa-pencil"></i> Edit<% end %></p>
 
 		<p><%= link_to "Remove", pokedex_path(@pokedex.id), method: :delete, data: { confirm: "remove #{@pokedex.name}?" }, class: 'btn btn-danger'%></p>

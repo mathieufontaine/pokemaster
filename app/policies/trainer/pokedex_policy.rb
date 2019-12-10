@@ -1,4 +1,4 @@
-class Trainer::StorePolicy < ApplicationPolicy
+class Trainer::PokedexPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.where(user: user)

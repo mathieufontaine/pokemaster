@@ -1,1 +1,30 @@
-index.html.erb
+<div class = "container">
+<div class="d-flex justify-content-between">
+	<h1> Pokédex Ladder </h1>
+	<p id = "add-button"><%= link_to new_pokemon_path do %>
+	  <i class="fa fa-plus"></i> Add a new pokemon
+		<% end %>
+	</p>
+</div>
+<table class="table">
+	<thead class="thead-dark"  id = "sticky-header">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Trainer</th>
+    <th scope="col">Avatar</th>
+    <th scope="col">Pokédex</th>  
+    <th scope="col">Number of Pokémons</th>
+
+  </tr>
+</thead>
+  <% @pokedexes.each do |pokedex| %>
+    <tr>
+      <th scope="row"><%=pokedex.id%></th>
+      <td><%=pokedex.user.username%></td>
+      <td><%= pokedex.user.avatar%></td>
+      <td><%= link_to pokedex.name, pokedex_path(pokedex.id) %></td>
+    </tr>
+  <%end%>
+</table>
+
+</div>

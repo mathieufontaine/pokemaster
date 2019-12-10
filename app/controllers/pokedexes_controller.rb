@@ -1,20 +1,21 @@
 class PokedexesController < ApplicationController
-   # before_action :set_trainer, only: [:show]
+   # before_action :set_pokedex, only: [:show]
    before_action :set_pokedex, only: [:show]
    skip_before_action :authenticate_user!, only: [:index]
+   before_action :skip_authorization
 
   def index
-  	@pokedexes = Pokedex.all
+  	@pokedexes = policy_scope(Pokedex)
   end
   	
   def show
-  	@pokedex = Pokedex.find(params[:id])
+    @pokedex = Pokedex.find(params[:id])
+    @pokemons = policy_scope(Pokemon)
   end
 
   def new
     @pokedex = Pokedex.new
     authorize @pokedex
-
   end
 
   def create
@@ -31,17 +32,14 @@ class PokedexesController < ApplicationController
     end
   end
 
-  def show
-    @pokedex = Pokedex.find(params[:id])
-    @pokemons = @pokedex.pokemons.all
-  end
+
 
 
   private
 
-  # def set_trainer
-  #   @trainer = Trainer.find_by(id: params[:trainer_id])
-  # end
+  def set_pokedex
+    @pokedex = Pokedex.find_by(id: params[:pokedex_id])
+  end
 
   def pokedex_params
     params.require(:pokedex).permit(:name, :user_id)
