@@ -1,5 +1,5 @@
 class UsersController::PokemonsController < ApplicationController
-  before_action :set_pokemon, only: [:show, :destroy]
+  before_action :set_user, only: [:show, :destroy]
 
   def index
     @pokemons = current_user.pokemons.order(:id)

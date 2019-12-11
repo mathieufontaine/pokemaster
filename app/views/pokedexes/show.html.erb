@@ -15,7 +15,7 @@
     <th class ="text-center" scope="col">Gotcha?</th>
   </tr>
 </thead>
-  <% @pokemons.each do |pokemon| %>
+  <% @pokedex.pokemons.each do |pokemon| %>
     <tr>
       <th scope="row"><%=pokemon.id%></th>
       <td><%= link_to pokemon.name, pokemon_path(pokemon.id) %></td>

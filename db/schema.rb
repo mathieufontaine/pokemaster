@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_162941) do
+ActiveRecord::Schema.define(version: 2019_12_09_172351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_12_09_162941) do
     t.index ["user_id"], name: "index_pokedexes_on_user_id"
   end
 
-  create_table "pokemon_pokedexes", force: :cascade do |t|
+  create_table "pokedexes_pokemons", force: :cascade do |t|
     t.integer "pokedex_id"
     t.integer "pokemon_id"
   end

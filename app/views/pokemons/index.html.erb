@@ -47,7 +47,7 @@
       <td><%=pokemon.location%></td>
       <td class ="text-center"><%=pokemon.height%> m</td>
       <td class ="text-center"><%=pokemon.weight%> kg</td>
-      <td class ="text-center plus-column">+</td>
+      <td scope="col-3" class="text-center plus-column"><%= link_to "+", pokemons_path, method: :post ,class:"btn btn-success"%></td>
     </tr>
   <%end%>
 </table>

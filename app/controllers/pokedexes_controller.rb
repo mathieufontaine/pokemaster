@@ -10,7 +10,7 @@ class PokedexesController < ApplicationController
   	
   def show
     @pokedex = Pokedex.find(params[:id])
-    @pokemons = policy_scope(Pokemon)
+    @pokemons = policy_scope(Pokemon).where(pokedex: @pokedex)
   end
 
   def new
