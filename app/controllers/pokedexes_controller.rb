@@ -1,7 +1,7 @@
 class PokedexesController < ApplicationController
    # before_action :set_pokedex, only: [:show]
    before_action :set_pokedex, only: [:show]
-   skip_before_action :authenticate_user!, only: [:index]
+   skip_before_action :authenticate_user!, only: [:index, :show]
    before_action :skip_authorization
 
   def index
@@ -26,7 +26,7 @@ class PokedexesController < ApplicationController
     if @pokedex.save
       current_user.role = 'trainer'
       current_user.save
-      redirect_to trainer_pokedex_path(@pokedex), notice: 'Gotcha! Your Pokédex was successfully created'
+      redirect_to pokedexes_path, notice: 'Gotcha! Your Pokédex was successfully created'
     else
       render :new
     end

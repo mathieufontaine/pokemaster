@@ -1,11 +1,32 @@
 <div class = "container">
-<div class="d-flex justify-content-between">
-	<h1 >All the Pokémons</h1>
-	<p id = "add-button"><%= link_to new_pokemon_path do %>
-	  <i class="fa fa-plus"></i> Add a new pokemon
-		<% end %>
-	</p>
+<div class="text-center">
+
+  <h1>Pokémons Index</h1>
+
 </div>
+  <div class="d-flex justify-content-center">
+    <div class="search-bar">
+      <%= form_tag pokemons_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Search for a pokémon, type, location, etc.."
+        %>
+    </div>
+    <div>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+      <div class="ml-2">
+        <%= form_tag pokemons_path, method: :get do %>
+        <%= submit_tag "All the Pokémons", class: "btn btn-info"%>
+    <% end %>
+    </div>
+
+  </div>
+  <br>
+
+
 <table class="table">
 	<thead class="thead-dark"  id = "sticky-header">
   <tr>
@@ -24,11 +45,17 @@
       <td><%= link_to pokemon.name, pokemon_path(pokemon.id) %></td>
       <td><%=pokemon.type.name%></td>
       <td><%=pokemon.location%></td>
-      <td class ="text-center"><%=pokemon.height%> m </td>
+      <td class ="text-center"><%=pokemon.height%> m</td>
       <td class ="text-center"><%=pokemon.weight%> kg</td>
-      <td class ="text-center" id="pokeball"><%= image_tag "logo.png", class:"embed-responsive-item"%></td>
+      <td class ="text-center plus-column">+</td>
     </tr>
   <%end%>
 </table>
-
+<!--   <div class="text-center"> -->
+  <p id = "add-button"><%= link_to new_pokemon_path do %>
+    <i class="fa fa-plus"></i> Add a new pokemon
+    <% end %>
+  </p>
+<!--   </div> -->
+<br>
 </div>

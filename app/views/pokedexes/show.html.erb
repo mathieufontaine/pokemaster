@@ -10,9 +10,9 @@
     <th scope="col">Pokemon</th>
     <th scope="col">Type</th>
     <th scope="col">Location</th>  
-    <th scope="col">Height</th>
-    <th scope="col">Weight</th>
-    <th scope="col">Add to my Pokédex</th>
+    <th class ="text-center" scope="col">Height</th>
+    <th class ="text-center" scope="col">Weight</th>
+    <th class ="text-center" scope="col">Gotcha?</th>
   </tr>
 </thead>
   <% @pokemons.each do |pokemon| %>
@@ -21,15 +21,9 @@
       <td><%= link_to pokemon.name, pokemon_path(pokemon.id) %></td>
       <td><%=pokemon.type.name%></td>
       <td><%=pokemon.location%></td>
-      <td ><%=pokemon.height%> m </td>
-      <td ><%=pokemon.weight%> kg</td>
-      <td >
-      <div class="checkbox">
-        <%= form_for(pokemon) do |f| %>
-        <label>
-          <%= f.check_box :caught %> caught
-        </label>
-           <% end %>
+      <td class ="text-center"><%=pokemon.height%> m </td>
+      <td class ="text-center"><%=pokemon.weight%> kg</td>
+      <td class ="text-center" id="pokeball"><%= image_tag "logo.png", class:"embed-responsive-item"%>
       	</td>
     </tr>
   <%end%>
@@ -44,4 +38,3 @@
 		 <p><%= link_to 'Go Back', pokedexes_path, class: "btn btn-info" %></p>
 	 </div>
 </div>
-

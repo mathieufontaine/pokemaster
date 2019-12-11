@@ -13,6 +13,8 @@
         <li class="nav-item active">
           <%= link_to "Home", pokemons_path, class: "nav-link" %>
         </li>
+          <%= link_to "Pokémons", pokemons_path, class: "nav-link" %>
+        </li>
         <li class="nav-item">
           <%= link_to "PokéLadder", pokedexes_path, class: "nav-link" %>
         </li>
@@ -31,10 +33,15 @@
     <div id="photo-profile">
       <% if user_signed_in? %>
           <div class="nav-item dropdown">
-            <%= image_tag "profile_picture.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if current_user.avatar.present? %>
+            <%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+            <%= cl_image_tag "pika1.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
+            <% end %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <%= link_to "My Pokédex", "#", class: "dropdown-item" %>
               <%= link_to "My Teams", "#", class: "dropdown-item" %>
+              <%= link_to "My Profile", edit_user_registration_path(@user), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </div>

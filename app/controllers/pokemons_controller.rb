@@ -4,7 +4,17 @@ class PokemonsController < ApplicationController
   before_action :skip_authorization
 
   def index
+
+    if params[:query].present?
+      sql_query = " \
+        pokemons.name ILIKE :query \
+        OR pokemons.location ILIKE :query \
+        OR types.name ILIKE :query \
+      "
+      @pokemons = policy_scope(Pokemon).joins(:type).where(sql_query, query: "%#{params[:query]}%")
+    else
     @pokemons = policy_scope(Pokemon)
+    end
   end
 
   def show

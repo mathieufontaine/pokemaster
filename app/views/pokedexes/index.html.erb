@@ -1,8 +1,8 @@
 <div class = "container">
 <div class="d-flex justify-content-between">
 	<h1> Pokédex Ladder </h1>
-	<p id = "add-button"><%= link_to new_pokemon_path do %>
-	  <i class="fa fa-plus"></i> Add a new pokemon
+	<p id = "add-button"><%= link_to new_pokedex_path do %>
+	  <i class="fa fa-plus"></i> Start my Pokédex!
 		<% end %>
 	</p>
 </div>
@@ -21,7 +21,7 @@
     <tr>
       <th scope="row"><%=pokedex.id%></th>
       <td><%=pokedex.user.username%></td>
-      <td><%= pokedex.user.avatar%></td>
+      <td><%=cl_image_tag pokedex.user.avatar, class: "avatar dropdown-toggle"%></td>
       <td><%= link_to pokedex.name, pokedex_path(pokedex.id) %></td>
     </tr>
   <%end%>

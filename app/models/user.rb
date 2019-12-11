@@ -4,9 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
- has_one :pokedex
- has_many :teams, through: :pokedex  
+ has_one :pokedex, dependent: :destroy
+ has_many :teams, through: :pokedex, dependent: :destroy  
  has_many :pokemons, through: :pokedex
+ mount_uploader :avatar, PhotoUploader
+
+ validates :email, presence: true, uniqueness: true
+ # validates :username, presence: true, uniqueness: true
 
 	 def add_to_my_pokedex(pokemon)
 	   @pokedex.pokemons << pokemon
