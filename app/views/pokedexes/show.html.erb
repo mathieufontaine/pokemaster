@@ -4,7 +4,7 @@
 <h1><strong>#</strong><%=@pokedex.id%>. <%= @pokedex.name %></h1>
 <div class="">
   <% if @pokedex.is_trainer?(current_user) %>
-  <%= link_to 'Update my Pokedex', trainer_pokedex_path(@pokedex), class: "btn btn-success" %>
+  <%= link_to 'Add Pokémons', pokemons_path, class: "btn btn-success" %>
   <% end %>
 </div>
 </div>

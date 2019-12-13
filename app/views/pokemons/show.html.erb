@@ -30,7 +30,7 @@
 
 
     <% if user_signed_in? && current_user.pokedex.present?%>
-   <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Pokédex",trainer_pokedex_pokemons_path(current_user.pokedex.id), method: :post, class: "btn btn-primary" %></p>
+   <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Pokédex",trainer_pokedex_pokemon_path(current_user.pokedex.id, @pokemon), method: :post, class: "btn btn-primary" %></p>
    <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Teams", pokemons_path, class: "btn btn-info" %></p>
    <%end%>
 </div>

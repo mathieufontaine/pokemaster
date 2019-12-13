@@ -5,7 +5,7 @@ class PokedexesController < ApplicationController
    before_action :skip_authorization
 
   def index
-  	@pokedexes = policy_scope(Pokedex)
+  	@pokedexes = policy_scope(Pokedex).sort {|a,b| b.pokemons.count <=> a.pokemons.count}
   end
   	
   def show
