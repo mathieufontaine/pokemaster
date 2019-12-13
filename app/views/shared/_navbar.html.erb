@@ -39,6 +39,7 @@
             <%= cl_image_tag "pika1.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false  %>
             <% end %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <h5 class="text-center btn-info"><%=current_user.username%></h5>
               <%= link_to "My Pokédex", "#", class: "dropdown-item" %>
               <%= link_to "My Teams", "#", class: "dropdown-item" %>
               <%= link_to "My Profile", edit_user_registration_path(@user), class: "dropdown-item" %>

@@ -33,11 +33,11 @@ class Trainer::PokedexesController < ApplicationController
   # end
 
   def set_pokedex
-    @pokedex = Pokedex.find_by(id: params[:id])
-    # authorize @team
+    @pokedex = Pokedex.find(params[:id])
+    authorize @pokedex
   end
 
   def pokedex_params
-    params.require(:pokedex).permit(:name, :trainer_id)
+    params.require(:pokedex).permit(:name, :user_id)
   end
 end

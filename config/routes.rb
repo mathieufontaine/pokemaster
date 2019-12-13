@@ -11,10 +11,10 @@ Rails.application.routes.draw do
 
   namespace :trainer do
     resources :pokedexes, only: [:show, :edit, :update, :destroy] do
-      resources :pokemons
+      resources :pokemons, only: [:create, :destroy]
     end
     resources :teams do
-      resources :pokemons
+      resources :pokemons, only: [:create, :destroy]
     end
   end
 

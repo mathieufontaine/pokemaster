@@ -36,7 +36,10 @@
     <th scope="col">Location</th>  
     <th class ="text-center" scope="col">Height</th>
     <th class ="text-center" scope="col">Weight</th>
+    <% if user_signed_in? && current_user.pokedex.present?%>
     <th class ="text-center" scope="col">Add to my Pokédex</th>
+      <% end %>
+
   </tr>
 </thead>
   <% @pokemons.each do |pokemon| %>
@@ -47,8 +50,11 @@
       <td><%=pokemon.location%></td>
       <td class ="text-center"><%=pokemon.height%> m</td>
       <td class ="text-center"><%=pokemon.weight%> kg</td>
-      <td scope="col-3" class="text-center plus-column"><%= link_to "+", pokemons_path, method: :post ,class:"btn btn-success"%></td>
+
+  <% if user_signed_in? && current_user.pokedex.present?%>
+      <td scope="col-3" class="text-center plus-column"><%= link_to "+", trainer_pokedex_pokemons_path(current_user.pokedex.id), method: :post ,class:"btn btn-success"%></td>
     </tr>
+  <%end%>
   <%end%>
 </table>
 <!--   <div class="text-center"> -->
