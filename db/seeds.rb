@@ -22,11 +22,15 @@ Type.destroy_all
 
 
 url_types = "https://pokeapi.co/api/v2/type"
+# url_moves = "https://pokeapi.co/api/v2/move"
 
 # pokemons = open(url_pokemons).read
 types = open(url_types).read
+# moves = open(url_types).read
 
 types_array = JSON.parse(types)["results"]
+# moves_array = JSON.parse(moves)["results"]
+
 # pokemons_array = JSON.parse(pokemons)["results"]
 # types = PokeApi.get(:type)
 
@@ -40,17 +44,25 @@ types_array.each do |type|
 	name: type["name"])
 end
 
+# puts 'Creating moves...'
+
+
+# moves_array.each do |type|
+# 	Attack.create!(
+# 	name: type["name"],
+# 	)
+# end
 
 puts 'Creating Pokémons...'
 
 
 
-ids = []
-for i in 1..200
-	ids << i	
+poke_ids = []
+for i in 1..20
+	poke_ids << i	
 end
 
-ids.each do |id|
+poke_ids.each do |id|
 url = "https://pokeapi.co/api/v2/pokemon/#{id}"
 pokemon = JSON.parse(open(url).read)
 Pokemon.create!(
@@ -59,10 +71,30 @@ Pokemon.create!(
 		height: pokemon["height"],
 		weight: pokemon["weight"],
 		location: Faker::Games::Pokemon.location,
+		# type: pokemon["types"][0]["type"]["name"]
 		type: Type.all.sample)
+
 end
 
+puts 'Creating moves...'
 
+moves_ids = []
+for i in 1..40
+	moves_ids << i	
+end
+
+moves_ids.each do |id|
+url = "https://pokeapi.co/api/v2/move/#{id}"
+move = JSON.parse(open(url).read)
+Attack.create!(
+		name: move["name"].capitalize,
+		# picture: pokemon["url"],
+		precision: move["accuracy"],
+		power: move["power"],
+		power_point: move["pp"],
+		type: Type.all.sample)
+
+end
 
 
 # pokemons_array.each do |pokemon|

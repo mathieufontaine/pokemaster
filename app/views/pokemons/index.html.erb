@@ -48,8 +48,8 @@
       <td><%= link_to pokemon.name, pokemon_path(pokemon.id) %></td>
       <td><%=pokemon.type.name%></td>
       <td><%=pokemon.location%></td>
-      <td class ="text-center"><%=pokemon.height%> m</td>
-      <td class ="text-center"><%=pokemon.weight%> kg</td>
+      <td class ="text-center"><%=(pokemon.height)/10%> m</td>
+      <td class ="text-center"><%=(pokemon.weight)/10%> kg</td>
 
   <% if user_signed_in? && current_user.pokedex.present?%>
       <td scope="col-3" class="text-center plus-column"><%= link_to "+", trainer_pokedex_pokemon_path(current_user.pokedex.id, pokemon.id), method: :post ,class:"btn btn-success"%></td>

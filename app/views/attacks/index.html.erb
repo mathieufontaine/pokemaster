@@ -1,2 +1,51 @@
-<h1>Attacks#index</h1>
-<p>Find me in app/views/attacks/index.html.erb</p>
+<div class = "container">
+  <h1 class="text-center" >Moves Index</h1>
+  
+  <div class="d-flex justify-content-center">
+    
+    <div class="search-bar">
+      <%= form_tag attacks_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Search for a move, type of move, power"
+        %>
+    </div>
+    <div>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+    <div class="ml-2">
+        <%= form_tag attacks_path, method: :get do %>
+        <%= submit_tag "All the Moves", class: "btn btn-info"%>
+    <% end %>
+    </div>
+
+  </div>
+
+  <br>
+
+	<table class="table">
+		<thead class="thead-dark"  id = "sticky-header">
+	  <tr>
+	    <th scope="col">#</th>
+	    <th scope="col">Name</th>
+	    <th scope="col">Type</th>
+	    <th class ="text-center" scope="col">Power</th>  
+	    <th class ="text-center" scope="col">Accuracy</th>
+	    <th class ="text-center" scope="col">PP</th>
+	  </tr>
+	</thead>
+	  <% @attacks.each do |attack| %>
+	    <tr>
+	      <th scope="row"><%=attack.id%></th>
+	      <td><%= link_to attack.name, attack_path(attack.id) %></td>
+	      <td><%=attack.type.name%></td>
+	      <td class ="text-center"><strong><%=attack.power%></strong></td>
+	      <td class ="text-center"><strong><%=attack.precision%></strong></td>
+	      <td class ="text-center"><strong><%=attack.power_point%></strong></td>
+	    </tr>
+	  <%end%>
+	</table>
+
+</div>

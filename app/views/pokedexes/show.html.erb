@@ -26,8 +26,8 @@
       <td><%= link_to pokemon.name, pokemon_path(pokemon.id) %></td>
       <td><%=pokemon.type.name%></td>
       <td><%=pokemon.location%></td>
-      <td class ="text-center"><%=pokemon.height%> m </td>
-      <td class ="text-center"><%=pokemon.weight%> kg</td>
+      <td class ="text-center"><%=(pokemon.height)/10%> m </td>
+      <td class ="text-center"><%=(pokemon.weight)/10%> kg</td>
       <td class ="text-center" id="pokeball"><%= image_tag "logo.png", class:"embed-responsive-item"%>
       	</td>
     </tr>

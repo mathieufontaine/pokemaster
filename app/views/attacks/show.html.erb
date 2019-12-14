@@ -1,2 +1,30 @@
-<h1>Attacks#show</h1>
-<p>Find me in app/views/attacks/show.html.erb</p>
+
+<div class= "container">
+<h1><strong>#</strong><%=@attack.id%>. <%= @attack.name %></h1>
+
+
+<table class="table">
+    <tbody>
+        <tr>
+          <th>Type</th>
+            <td><%=@attack.type.name%></td>
+        </tr>
+        <tr>
+          <th>Power</th>
+            <td><%=@attack.power%></td>
+        </tr>
+        <tr>
+          <th>Accuracy</th>
+            <td><%=@attack.precision%></td>
+        </tr>
+        <th>PP</th>
+            <td><%=@attack.power_point%></td>
+        </tr>
+    </tbody>
+</table>
+
+
+		 <p><%= link_to 'Go Back', attacks_path, class: "btn btn-info" %></p>
+<!-- 	 </div>
+ --></div>
+
