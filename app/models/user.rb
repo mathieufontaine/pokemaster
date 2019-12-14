@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
  has_one :pokedex, dependent: :destroy
- has_many :teams, through: :pokedex, dependent: :destroy  
+ has_many :teams, dependent: :destroy  
  has_many :pokemons, through: :pokedex
  mount_uploader :avatar, PhotoUploader
 
