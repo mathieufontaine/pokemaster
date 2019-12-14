@@ -12,8 +12,8 @@
     <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="form-actions">
-    <%= f.submit  "Update my Pokedex", class: "btn btn-success" %>
+    <p><%= f.submit  "Update my Pokedex", trainer_pokedex_path, method: :patch, class: "btn btn-primary" %></p>
   </div>
   <% end %>
-  <%= link_to 'Back', pokedexes_path, class: "btn btn-outline-success" %>
+    <p><%= link_to 'Back', pokedexes_path, class: "btn btn-info" %></p>
 

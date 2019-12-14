@@ -51,10 +51,15 @@
       <td class ="text-center"><%=(pokemon.height)/10%> m</td>
       <td class ="text-center"><%=(pokemon.weight)/10%> kg</td>
 
-  <% if user_signed_in? && current_user.pokedex.present?%>
-      <td scope="col-3" class="text-center plus-column"><%= link_to "+", trainer_pokedex_pokemon_path(current_user.pokedex.id, pokemon.id), method: :post ,class:"btn btn-success"%></td>
+      <% if user_signed_in? && current_user.pokedex.present?%>
+        <% if current_user.pokedex.pokemons.include?(pokemon)%>
+          <td scope="col-3" class ="text-center" id="pokeball"><%= image_tag "logo.png", class:"embed-responsive-item"%></td>
+        <% else%>
+          <td scope="col-3" class="text-center plus-column">
+              <%= link_to "+", trainer_pokedex_pokemon_path(current_user.pokedex.id, pokemon.id), method: :post ,class:"btn btn-success"%></td>
+        <%end%>
+      <%end%>
     </tr>
-  <%end%>
   <%end%>
 </table>
 <!--   <div class="text-center"> -->

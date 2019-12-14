@@ -1,29 +1,31 @@
 <div class = "container">
 <div class="d-flex justify-content-between">
 	<h1> Pokédex Ladder </h1>
-	<p id = "add-button"><%= link_to new_pokedex_path do %>
+<!-- 	<p id = "add-button"><%= link_to new_pokedex_path do %>
 	  <i class="fa fa-plus"></i> Start my Pokédex!
-		<% end %>
+		<% end %> -->
 	</p>
 </div>
 <table class="table">
 	<thead class="thead-dark"  id = "sticky-header">
   <tr>
     <th scope="col">#</th>
-    <th scope="col"></th>
+    <th scope="col">Avatar</th>
     <th scope="col">Trainer</th>
-    <th scope="col">Pokédex</th>  
-    <th scope="col">Number of Pokémons</th>
+    <th class= "text-center" scope="col">Pokédex</th>  
+    <th class= "text-center" scope="col">Number of Pokémons</th>
+    <th class= "text-center" scope="col">Date of creation</th>
 
   </tr>
 </thead>
   <% @pokedexes.each do |pokedex| %>
     <tr>
       <th scope="row"><%=pokedex.id%></th>
-      <td><%=cl_image_tag pokedex.user.avatar, class: "avatar dropdown-toggle"%></td>
-      <td><%=pokedex.user.username%></td>
-      <td><%= link_to pokedex.name, pokedex_path(pokedex.id) %></td>
-      <td><%= pokedex.pokemons.size %></td>
+      <td ><%=cl_image_tag pokedex.user.avatar, class: "avatar dropdown-toggle"%></td>
+      <td ><%=pokedex.user.username%></td>
+      <td class= "text-center"><%= link_to pokedex.name, pokedex_path(pokedex.id) %></td>
+      <td class= "text-center"><%= pokedex.pokemons.size %></td>
+      <td class= "text-center"><%= pokedex.created_at %></td>
     </tr>
   <%end%>
 </table>
