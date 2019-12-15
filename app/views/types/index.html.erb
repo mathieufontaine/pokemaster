@@ -5,7 +5,7 @@
 		<thead class="thead-dark"  id = "sticky-header">
 	  <tr>
 	    <th scope="col">#</th>
-	    <th scope="col">Name</th>
+	    <th class ="text-center" scope="col">Type</th>
 	    <th class ="text-center" scope="col">Number of Pokemons</th>  
 	    <th class ="text-center" scope="col">Number of Moves</th>
 	  </tr>
@@ -13,7 +13,47 @@
 	  <% @types.each do |type| %>
 	    <tr>
 	      <th scope="row"><%=type.id%></th>
-	      <td><%= link_to type.name.capitalize, type_path(type.id) %></td>
+	      	<% case type.name %>
+	          <% when "bug" %>
+	            <td class ="text-center type-header " id = "bug-header">
+	          <% when "dark" %>
+	            <td class ="text-center type-header" id = "dark-header">
+	          <% when "dragon" %>
+	            <td class ="text-center type-header" id = "dragon-header">
+	          <% when "electric" %>
+	            <td class ="text-center type-header" id = "electric-header">
+	          <% when "fairy" %>
+	            <td class ="text-center type-header" id = "fairy-header">
+	          <% when "fighting" %>
+	            <td class ="text-center type-header" id = "fighting-header">
+	          <% when "fire" %>
+	            <td class ="text-center type-header" id = "fire-header">
+	          <% when "flying" %>
+	            <td class ="text-center type-header" id = "flying-header">
+	          <% when "ghost" %>
+	            <td class ="text-center type-header" id = "ghost-header">
+	          <% when "grass" %>
+	            <td class ="text-center type-header" id = "grass-header">
+	          <% when "ground" %>
+	            <td class ="text-center type-header" id = "ground-header">
+	          <% when "ice" %>
+	            <td class ="text-center type-header" id = "ice-header">
+	          <% when "normal" %>
+	            <td class ="text-center type-header" id = "normal-header">
+	          <% when "poison" %>
+	            <td class ="text-center type-header" id = "poison-header">
+	          <% when "psychic" %>
+	            <td class ="text-center type-header" id = "psychic-header">
+	          <% when "rock" %>
+	            <td class ="text-center type-header" id = "rock-header">
+	          <% when "steel" %>
+	            <td class ="text-center type-header" id = "steel-header">
+	          <% when "water" %>
+	            <td class ="text-center type-header" id = "water-header">
+	          <%else%>
+	            <td>
+	          <% end %>
+	      	<%= link_to type.name.capitalize, type_path(type.id) %></td>
 	      <td class ="text-center"><strong><%=type.pokemons.size%></strong></td>
 	      <td class ="text-center"><strong><%=type.attacks.size%></strong></td>
 	    </tr>
@@ -21,3 +61,5 @@
 	</table>
 
 </div>
+
+	

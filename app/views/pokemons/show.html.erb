@@ -43,7 +43,7 @@
       <div class= "d-flex justify-content-between">
     <% end %>
 
-    <h1><strong>#</strong><%=@pokemon.id%>. <%= @pokemon.name %></h1>
+    <h1 style="color:white"><strong>#</strong><%=@pokemon.id%>. <%= @pokemon.name %></h1>
     <div class= "d-flex align-items-center mr-4 mt-3">
         <% if user_signed_in? && current_user.pokedex.present?%>
          <% if current_user.pokedex.pokemons.include?(@pokemon)%>
@@ -91,41 +91,41 @@
 
     <% case @pokemon.type.name %>
 <% when "bug" %>
-  <thead class="thead" id = "bug-header">
+  <thead class="thead type-header" id = "bug-header">
 <% when "dark" %>
-  <thead class="thead" id = "dark-header">
+  <thead class="thead type-header" id = "dark-header">
 <% when "dragon" %>
-  <thead class="thead" id = "dragon-header">
+  <thead class="thead type-header" id = "dragon-header">
 <% when "electric" %>
-  <thead class="thead" id = "electric-header">
+  <thead class="thead type-header" id = "electric-header">
 <% when "fairy" %>
-  <thead class="thead" id = "fairy-header">
+  <thead class="thead type-header" id = "fairy-header">
 <% when "fighting" %>
-  <thead class="thead" id = "fighting-header">
+  <thead class="thead type-header" id = "fighting-header">
 <% when "fire" %>
-  <thead class="thead" id = "fire-header">
+  <thead class="thead type-header" id = "fire-header">
 <% when "flying" %>
-  <thead class="thead" id = "flying-header">
+  <thead class="thead type-header" id = "flying-header">
 <% when "ghost" %>
-  <thead class="thead" id = "ghost-header">
+  <thead class="thead type-header" id = "ghost-header">
 <% when "grass" %>
-  <thead class="thead" id = "grass-header">
+  <thead class="thead type-header" id = "grass-header">
 <% when "ground" %>
-  <thead class="thead" id = "ground-header">
+  <thead class="thead type-header" id = "ground-header">
 <% when "ice" %>
-  <thead class="thead" id = "ice-header">
+  <thead class="thead type-header" id = "ice-header">
 <% when "normal" %>
-  <thead class="thead" id = "normal-header">
+  <thead class="thead type-header" id = "normal-header">
 <% when "poison" %>
-  <thead class="thead" id = "poison-header">
+  <thead class="thead type-header" id = "poison-header">
 <% when "psychic" %>
-  <thead class="thead" id = "psychic-header">
+  <thead class="thead type-header" id = "psychic-header">
 <% when "rock" %>
-  <thead class="thead" id = "rock-header">
+  <thead class="thead type-header" id = "rock-header">
 <% when "steel" %>
-  <thead class="thead" id = "steel-header">
+  <thead class="thead type-header" id = "steel-header">
 <% when "water" %>
-  <thead class="thead" id = "water-header">
+  <thead class="thead type-header" id = "water-header">
 <%else%>
     <thead class="thead-black">
 <% end %>

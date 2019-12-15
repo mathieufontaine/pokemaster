@@ -30,7 +30,7 @@
 	  <tr>
 	    <th scope="col">#</th>
 	    <th scope="col">Name</th>
-	    <th scope="col">Type</th>
+	    <th class ="text-center" scope="col">Type</th>
 	    <th class ="text-center" scope="col">Power</th>  
 	    <th class ="text-center" scope="col">Accuracy</th>
 	    <th class ="text-center" scope="col">PP</th>
@@ -40,7 +40,46 @@
 	    <tr>
 	      <th scope="row"><%=attack.id%></th>
 	      <td><%= link_to attack.name, attack_path(attack.id) %></td>
-	      <td><%=attack.type.name%></td>
+	      	  <% case attack.type.name %>
+	          <% when "bug" %>
+	            <td class ="text-center type-header" id = "bug-header">
+	          <% when "dark" %>
+	            <td class ="text-center type-header" id = "dark-header">
+	          <% when "dragon" %>
+	            <td class ="text-center type-header" id = "dragon-header">
+	          <% when "electric" %>
+	            <td class ="text-center type-header" id = "electric-header">
+	          <% when "fairy" %>
+	            <td class ="text-center type-header" id = "fairy-header">
+	          <% when "fighting" %>
+	            <td class ="text-center type-header" id = "fighting-header">
+	          <% when "fire" %>
+	            <td class ="text-center type-header" id = "fire-header">
+	          <% when "flying" %>
+	            <td class ="text-center type-header" id = "flying-header">
+	          <% when "ghost" %>
+	            <td class ="text-center type-header" id = "ghost-header">
+	          <% when "grass" %>
+	            <td class ="text-center type-header" id = "grass-header">
+	          <% when "ground" %>
+	            <td class ="text-center type-header" id = "ground-header">
+	          <% when "ice" %>
+	            <td class ="text-center type-header" id = "ice-header">
+	          <% when "normal" %>
+	            <td class ="text-center type-header" id = "normal-header">
+	          <% when "poison" %>
+	            <td class ="text-center type-header" id = "poison-header">
+	          <% when "psychic" %>
+	            <td class ="text-center type-header" id = "psychic-header">
+	          <% when "rock" %>
+	            <td class ="text-center type-header" id = "rock-header">
+	          <% when "steel" %>
+	            <td class ="text-center type-header" id = "steel-header">
+	          <% when "water" %>
+	            <td class ="text-center type-header" id = "water-header">
+	          <%else%>
+	            <td class ="text-center">
+	          <% end %><%=attack.type.name%></td>
 	      <td class ="text-center"><strong><%=attack.power%></strong></td>
 	      <td class ="text-center"><%=attack.precision%></td>
 	      <td class ="text-center"><%=attack.power_point%></td>

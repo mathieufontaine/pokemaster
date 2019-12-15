@@ -1,9 +1,9 @@
-#bug-header{
-background-color: $bug;
+.type-header h1, .type-header a{
 color: white 
 }
 
-#bug-header h1{
+#bug-header{
+background-color: $bug;
 color: white 
 }
 
@@ -12,16 +12,8 @@ background-color: $dark;
 color: white 
 }
 
-#dark-header h1{
-color: white 
-}
-
 #dragon-header{
 background-color: $dragon;
-color: white 
-}
-
-#dragon-header h1{
 color: white 
 }
 
@@ -30,16 +22,8 @@ background-color: $electric;
 color: black 
 }
 
-#electric-header h1{
-color: black 
-}
-
 #fairy-header{
 background-color: $fairy;
-color: white 
-}
-
-#fairy-header h1{
 color: white 
 }
 
@@ -48,16 +32,8 @@ background-color: $fighting;
 color: white 
 }
 
-#fighting-header h1{
-color: white 
-}
-
 #fire-header{
 background-color: $fire;
-color: white 
-}
-
-#fire-header h1{
 color: white 
 }
 
@@ -66,16 +42,8 @@ background-color: $flying;
 color: white 
 }
 
-#flying-header h1{
-color: white 
-}
-
 #ghost-header{
 background-color: $ghost;
-color: white 
-}
-
-#ghost-header h1{
 color: white 
 }
 
@@ -84,26 +52,15 @@ background-color: $grass;
 color: white 
 }
 
-#grass-header h1{
-color: white 
-}
-
 #ground-header{
 background-color: $ground;
 color: white 
 }
 
-#ground-header h1{
-color: white 
-}
 
 #ice-header{
 background-color: $ice;
 color: white 
-}
-
-#ice-header h1{
-color: black 
 }
 
 #normal-header{
@@ -111,16 +68,8 @@ background-color: $normal;
 color: black 
 }
 
-#normal-header h1{
-color: white 
-}
-
 #poison-header{
 background-color: $poison;
-color: white 
-}
-
-#poison-header h1{
 color: white 
 }
 
@@ -129,16 +78,8 @@ background-color: $psychic;
 color: white 
 }
 
-#psychic-header h1{
-color: white 
-}
-
 #rock-header{
 background-color: $rock;
-color: white 
-}
-
-#rock-header h1{
 color: white 
 }
 
@@ -147,15 +88,8 @@ background-color: $steel;
 color: white 
 }
 
-#steel-header h1{
-color: white 
-}
-
 #water-header{
 background-color: $water;
 color: white 
 }
 
-#water-header h1{
-color: white 
-}
