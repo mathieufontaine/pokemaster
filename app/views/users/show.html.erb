@@ -1,44 +1,77 @@
 <div class="container">
 
-<h1>Profile Page</h1>
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Profile Page</h1>
+    <div class="d-flex">
+    <p class="mr-4"><%= link_to "Edit my Profile",edit_user_registration_path, class:"btn btn-primary" %></p>
+    <p><%= link_to "Delete my account", user_registration_path, class:"btn btn-danger", data: { confirm: "Are you sure?" }, method: :delete %></p>
+    </div>
+</div>
+<div class="d-flex align-items-stretch">
+    <div class= "d-flex flex-column mr-4 align-items-center justify-content-center">
+<!--         <h4 class="text-center">Avatar</h4>
 
+ -->        
+    <h5><strong>Avatar</strong></h5>
+     <% if current_user.avatar.present? %>
+        <%= cl_image_tag current_user.avatar, class: "big-avatar"%>
+        <% else %>
+          <%= image_tag "pika.jpg", class: "big-avatar" %>
+        <% end %>
+    </div>
+    <table class="table">
+        <tbody>
 
-<table class="table">
-    <tbody>
-
-
-    	<tr>
-    	  <th>Avatar</th>
-    	    <td>
-	    	  <% if current_user.avatar.present? %>
-			<%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style: 'font-size:30px;cursor:pointer'%>
-	    	<% else %>
-	    	  <%= image_tag "pika.jpg", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style: 'font-size:30px;cursor:pointer' %>
-	    	  <% end %>
-    	  	</td>
-    	</tr>
-
-        <tr>
-          <th>Username</th>
-            <td><%= @user.username %></td>
-        </tr>
-        <tr>
-          <th>email</th>
-            <td><%= @user.email %></td>
-        </tr>
-        <% if user_signed_in? && current_user.pokedex.present?%>
-        <tr>
-          <th>Pokedex</th>
-            <td><%=@user.pokedex.name%></td>
-        </tr>
-        <%end%>
-    </tbody>
-</table>
-
-
-<p><%= link_to "Edit my Profile",edit_user_registration_path, class:"btn btn-primary" %></p>
-
-
-<p><%= link_to "Delete my account", user_registration_path, class:"btn btn-danger", data: { confirm: "Are you sure?" }, method: :delete %></p>
+            <tr>
+              <th>Username</th>
+                <td><%= @user.username %></td>
+                <td></td>
+            </tr>
+            <tr>
+              <th>Email</th>
+                <td><%= @user.email %></td>
+                <td></td>
+            </tr>
+            <tr>
+              <th>Member since:</th>
+                <td><%= @user.created_at %></td>
+                <td></td>
+            </tr>
+            <tr>
+              <th>Pokedex</th>
+              <% if user_signed_in? && current_user.pokedex.present?%>
+                <td><%=@user.pokedex.name%></td>
+                <td><p><%= link_to "Remove my Pokédex", trainer_pokedex_path, method: :delete, data: { confirm: "Are you sure you want to delete #{current_user.pokedex.name} Pokédex?" }, class: 'btn btn-outline danger round'%></p>
+                </td>
+                <% else %>
+                <td>None</td>
+                <td></td>
+              <% end %>
+            </tr>
+              <% if user_signed_in? && current_user.pokedex.present?%>
+            <tr>
+              <th>Number of Pokémons caught:</th>
+                <td><%=@user.pokedex.pokemons.size%></td>
+                <td></td>
+            </tr>
+            <% end %>
+            <tr>
+              <th>Number of Teams</th>
+              <% if user_signed_in? && current_user.pokedex.present?%>
+                <% if current_user.teams.present?%>
+                    <td><%=@user.teams.size%></td>
+                    <td></td>
+                <% else %>
+                <td>0</td>
+                <td></td>
+                <% end %>
+            <% else %>
+            <td>None</td>
+            <td></td>
+              <%end%>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 </div>

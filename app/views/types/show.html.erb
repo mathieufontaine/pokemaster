@@ -1,6 +1,50 @@
 
 <div class= "container">
-<h1><strong>#</strong><%=@type.id%>. <%= @type.name.capitalize %></h1>
+
+<br>
+	<% case @type.name %>
+    <% when "bug" %>
+      <h1 id = "bug-header">
+    <% when "dark" %>
+      <h1 id = "dark-header">
+    <% when "dragon" %>
+      <h1 id = "dragon-header">
+    <% when "electric" %>
+      <h1 id = "electric-header">
+    <% when "fairy" %>
+      <h1 id = "fairy-header">
+    <% when "fighting" %>
+      <h1 id = "fighting-header">
+    <% when "fire" %>
+      <h1 id = "fire-header">
+    <% when "flying" %>
+      <h1 id = "flying-header">
+    <% when "ghost" %>
+      <h1 id = "ghost-header">
+    <% when "grass" %>
+      <h1 id = "grass-header">
+    <% when "ground" %>
+      <h1 id = "ground-header">
+    <% when "ice" %>
+      <h1 id = "ice-header">
+    <% when "normal" %>
+      <h1 id = "normal-header">
+    <% when "poison" %>
+      <h1 id = "poison-header">
+    <% when "psychic" %>
+      <h1 id = "psychic-header">
+    <% when "rock" %>
+      <h1 id = "rock-header">
+    <% when "steel" %>
+      <h1 id = "steel-header">
+    <% when "water" %>
+      <h1 id = "water-header">
+    <%else%>
+      <h1>
+    <% end %>
+    <strong>#</strong><%=@type.id%>. <%= @type.name.capitalize %></h1>
+
+<br>
 
 
 <table class="table">
@@ -21,8 +65,47 @@
 	<h2>Pokémons</h2>
 
 	<table class="table">
-		<thead class="thead-dark"  id = "sticky-header">
-	  <tr>
+	    <% case @type.name %>
+		<% when "bug" %>
+		  <thead class="thead" id = "bug-header">
+		<% when "dark" %>
+		  <thead class="thead" id = "dark-header">
+		<% when "dragon" %>
+		  <thead class="thead" id = "dragon-header">
+		<% when "electric" %>
+		  <thead class="thead" id = "electric-header">
+		<% when "fairy" %>
+		  <thead class="thead" id = "fairy-header">
+		<% when "fighting" %>
+		  <thead class="thead" id = "fighting-header">
+		<% when "fire" %>
+		  <thead class="thead" id = "fire-header">
+		<% when "flying" %>
+		  <thead class="thead" id = "flying-header">
+		<% when "ghost" %>
+		  <thead class="thead" id = "ghost-header">
+		<% when "grass" %>
+		  <thead class="thead" id = "grass-header">
+		<% when "ground" %>
+		  <thead class="thead" id = "ground-header">
+		<% when "ice" %>
+		  <thead class="thead" id = "ice-header">
+		<% when "normal" %>
+		  <thead class="thead" id = "normal-header">
+		<% when "poison" %>
+		  <thead class="thead" id = "poison-header">
+		<% when "psychic" %>
+		  <thead class="thead" id = "psychic-header">
+		<% when "rock" %>
+		  <thead class="thead" id = "rock-header">
+		<% when "steel" %>
+		  <thead class="thead" id = "steel-header">
+		<% when "water" %>
+		  <thead class="thead" id = "water-header">
+		<%else%>
+		  <thead class="thead-black">
+		<% end %>	  
+	    <tr>
 	    <th scope="col">#</th>
 	    <th scope="col">Pokemon</th>
 	    <th scope="col">Type</th>
@@ -32,7 +115,7 @@
 	    <% if user_signed_in? && current_user.pokedex.present?%>
 	    <th class ="text-center" scope="col">Add to my Pokédex</th>
 	     <% end %>
-	  </tr>
+		 </tr>
 	</thead>
 	  <% @type.pokemons.each do |pokemon| %>
 	    <tr>
@@ -59,11 +142,51 @@
 
 <% if @type.attacks.any? %>
 
-<h2>Moves</h2>
+	<h2>Moves</h2>
 
 	<table class="table">
-		<thead class="thead-dark"  id = "sticky-header">
-		  <tr>
+
+	    <% case @type.name %>
+		<% when "bug" %>
+		  <thead class="thead" id = "bug-header">
+		<% when "dark" %>
+		  <thead class="thead" id = "dark-header">
+		<% when "dragon" %>
+		  <thead class="thead" id = "dragon-header">
+		<% when "electric" %>
+		  <thead class="thead" id = "electric-header">
+		<% when "fairy" %>
+		  <thead class="thead" id = "fairy-header">
+		<% when "fighting" %>
+		  <thead class="thead" id = "fighting-header">
+		<% when "fire" %>
+		  <thead class="thead" id = "fire-header">
+		<% when "flying" %>
+		  <thead class="thead" id = "flying-header">
+		<% when "ghost" %>
+		  <thead class="thead" id = "ghost-header">
+		<% when "grass" %>
+		  <thead class="thead" id = "grass-header">
+		<% when "ground" %>
+		  <thead class="thead" id = "ground-header">
+		<% when "ice" %>
+		  <thead class="thead" id = "ice-header">
+		<% when "normal" %>
+		  <thead class="thead" id = "normal-header">
+		<% when "poison" %>
+		  <thead class="thead" id = "poison-header">
+		<% when "psychic" %>
+		  <thead class="thead" id = "psychic-header">
+		<% when "rock" %>
+		  <thead class="thead" id = "rock-header">
+		<% when "steel" %>
+		  <thead class="thead" id = "steel-header">
+		<% when "water" %>
+		  <thead class="thead" id = "water-header">
+		<%else%>
+		  <thead class="thead-black">
+		<% end %>		  
+		<tr>
 		    <th scope="col">#</th>
 		    <th scope="col">Name</th>
 		    <th scope="col">Type</th>
@@ -88,7 +211,7 @@
 
 
 		 <p><%= link_to 'Go Back', types_path, class: "btn btn-info" %></p>
-<!-- 	 </div>
- --></div>
+	 <br>
+</div>
 
 

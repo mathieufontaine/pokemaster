@@ -1,16 +1,55 @@
 
 <div class= "container">
+<br>
 
-  <div class= "d-flex justify-content-between">
+    <% case @pokemon.type.name %>
+    <% when "bug" %>
+      <div class= "d-flex justify-content-between" id = "bug-header">
+    <% when "dark" %>
+      <div class= "d-flex justify-content-between" id = "dark-header">
+    <% when "dragon" %>
+      <div class= "d-flex justify-content-between" id = "dragon-header">
+    <% when "electric" %>
+      <div class= "d-flex justify-content-between" id = "electric-header">
+    <% when "fairy" %>
+      <div class= "d-flex justify-content-between" id = "fairy-header">
+    <% when "fighting" %>
+      <div class= "d-flex justify-content-between" id = "fighting-header">
+    <% when "fire" %>
+      <div class= "d-flex justify-content-between" id = "fire-header">
+    <% when "flying" %>
+      <div class= "d-flex justify-content-between" id = "flying-header">
+    <% when "ghost" %>
+      <div class= "d-flex justify-content-between" id = "ghost-header">
+    <% when "grass" %>
+      <div class= "d-flex justify-content-between" id = "grass-header">
+    <% when "ground" %>
+      <div class= "d-flex justify-content-between" id = "ground-header">
+    <% when "ice" %>
+      <div class= "d-flex justify-content-between" id = "ice-header">
+    <% when "normal" %>
+      <div class= "d-flex justify-content-between" id = "normal-header">
+    <% when "poison" %>
+      <div class= "d-flex justify-content-between" id = "poison-header">
+    <% when "psychic" %>
+      <div class= "d-flex justify-content-between" id = "psychic-header">
+    <% when "rock" %>
+      <div class= "d-flex justify-content-between" id = "rock-header">
+    <% when "steel" %>
+      <div class= "d-flex justify-content-between" id = "steel-header">
+    <% when "water" %>
+      <div class= "d-flex justify-content-between" id = "water-header">
+    <%else%>
+      <div class= "d-flex justify-content-between">
+    <% end %>
 
     <h1><strong>#</strong><%=@pokemon.id%>. <%= @pokemon.name %></h1>
-
-    <div class= "d-flex align-items-center">
+    <div class= "d-flex align-items-center mr-4 mt-3">
         <% if user_signed_in? && current_user.pokedex.present?%>
          <% if current_user.pokedex.pokemons.include?(@pokemon)%>
-           <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Teams", pokemons_path, class: "btn btn-success" %></p>
+           <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Teams", pokemons_path, class: "btn bg-white round" %></p>
         <% else %>
-          <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Pokédex",trainer_pokedex_pokemon_path(current_user.pokedex.id, @pokemon), method: :post, class: "btn btn-primary" %></p>
+          <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Pokédex",trainer_pokedex_pokemon_path(current_user.pokedex.id, @pokemon), method: :post, class: "btn bg-white round" %></p>
         <% end %>
        <%end%>
     </div>
@@ -49,7 +88,47 @@
 <h3>All <%= @pokemon.type.name.capitalize %> Moves</h3>
 
   <table class="table">
-    <thead class="thead-dark"  id = "sticky-header">
+
+    <% case @pokemon.type.name %>
+<% when "bug" %>
+  <thead class="thead" id = "bug-header">
+<% when "dark" %>
+  <thead class="thead" id = "dark-header">
+<% when "dragon" %>
+  <thead class="thead" id = "dragon-header">
+<% when "electric" %>
+  <thead class="thead" id = "electric-header">
+<% when "fairy" %>
+  <thead class="thead" id = "fairy-header">
+<% when "fighting" %>
+  <thead class="thead" id = "fighting-header">
+<% when "fire" %>
+  <thead class="thead" id = "fire-header">
+<% when "flying" %>
+  <thead class="thead" id = "flying-header">
+<% when "ghost" %>
+  <thead class="thead" id = "ghost-header">
+<% when "grass" %>
+  <thead class="thead" id = "grass-header">
+<% when "ground" %>
+  <thead class="thead" id = "ground-header">
+<% when "ice" %>
+  <thead class="thead" id = "ice-header">
+<% when "normal" %>
+  <thead class="thead" id = "normal-header">
+<% when "poison" %>
+  <thead class="thead" id = "poison-header">
+<% when "psychic" %>
+  <thead class="thead" id = "psychic-header">
+<% when "rock" %>
+  <thead class="thead" id = "rock-header">
+<% when "steel" %>
+  <thead class="thead" id = "steel-header">
+<% when "water" %>
+  <thead class="thead" id = "water-header">
+<%else%>
+    <thead class="thead-black">
+<% end %>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>

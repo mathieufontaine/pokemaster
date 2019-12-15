@@ -1,0 +1,25 @@
+.round {
+border-radius: 10px
+}
+
+.bg-white{
+background-color: white;
+color: #353A40;
+// border: 2px solid black
+}
+
+.bg-white:hover{
+background-color: #353A40 !important;
+color: white
+}
+
+.danger{
+color: red;
+border: 1px solid red
+}
+
+.danger:hover{
+background-color: red;
+color: white;
+border: 1px solid red
+}

@@ -10,8 +10,6 @@
     </div>
 
 
-
-
     <table class="table">
     	<thead class="thead-dark"  id = "sticky-header">
       <tr>
@@ -38,14 +36,6 @@
       <%end%>
     </table>
 
-	<div class= "d-flex justify-content-between align-items-center">
-<!-- 		<p><%= link_to edit_trainer_pokedex_path(@pokedex.id), class: 'btn btn-primary' do %>
-		<i class="fa fa-pencil"></i> Edit my Pokédex<% end %></p> -->
      <p><%= link_to 'Go Back', pokedexes_path, class: "btn btn-info" %></p>
-  <% if @pokedex.is_trainer?(current_user) %>
-
-		<p><%= link_to "Delete my Pokédex", trainer_pokedex_path, method: :delete, data: { confirm: "remove #{@pokedex.name}?" }, class: 'btn btn-danger'%></p>
-     <% end %>
-   </div>
 
 </div>
