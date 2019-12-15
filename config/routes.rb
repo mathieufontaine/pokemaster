@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'types/index'
+  get 'types/show'
   post   "/trainer/pokedexes/:pokedex_id/pokemons/:id", to: "trainer/pokemons#create", as: :trainer_pokedex_pokemon
 
   devise_for :users

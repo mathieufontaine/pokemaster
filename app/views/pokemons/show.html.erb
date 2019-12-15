@@ -1,7 +1,21 @@
 
 <div class= "container">
-<h1><strong>#</strong><%=@pokemon.id%>. <%= @pokemon.name %></h1>
 
+  <div class= "d-flex justify-content-between">
+
+    <h1><strong>#</strong><%=@pokemon.id%>. <%= @pokemon.name %></h1>
+
+    <div class= "d-flex align-items-center">
+        <% if user_signed_in? && current_user.pokedex.present?%>
+         <% if current_user.pokedex.pokemons.include?(@pokemon)%>
+           <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Teams", pokemons_path, class: "btn btn-success" %></p>
+        <% else %>
+          <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Pokédex",trainer_pokedex_pokemon_path(current_user.pokedex.id, @pokemon), method: :post, class: "btn btn-primary" %></p>
+        <% end %>
+       <%end%>
+    </div>
+
+  </div>
 
 <table class="table">
     <tbody>
@@ -26,21 +40,42 @@
         </tr>
     </tbody>
 </table>
-<div class= "d-flex align-items-center">
 
+<br>
+<div>
 
-    <% if user_signed_in? && current_user.pokedex.present?%>
-   <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Pokédex",trainer_pokedex_pokemon_path(current_user.pokedex.id, @pokemon), method: :post, class: "btn btn-primary" %></p>
-   <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Teams", pokemons_path, class: "btn btn-info" %></p>
-   <%end%>
+<% if @pokemon.type.attacks.any? %>
+
+<h3>All <%= @pokemon.type.name.capitalize %> Moves</h3>
+
+  <table class="table">
+    <thead class="thead-dark"  id = "sticky-header">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th class ="text-center" scope="col">Power</th>  
+        <th class ="text-center" scope="col">Accuracy</th>
+        <th class ="text-center" scope="col">PP</th>
+      </tr>
+    </thead>
+      <% @pokemon.type.attacks.each do |attack| %>
+        <tr>
+          <th scope="row"><%=attack.id%></th>
+          <td><%= link_to attack.name, attack_path(attack.id) %></td>
+          <td><%=attack.type.name%></td>
+          <td class ="text-center"><strong><%=attack.power%></strong></td>
+          <td class ="text-center"><%=attack.precision%></td>
+          <td class ="text-center"><%=attack.power_point%></td>
+        </tr>
+      <%end%>
+  </table>
+
+<% end %>
 </div>
-	<!-- <div class= "d-flex align-items-center">
-		<p><%= link_to edit_pokemon_path(@pokemon.id), class: 'btn btn-primary' do %>
-		<i class="fa fa-pencil"></i> Edit<% end %></p>
-
-		<p><%= link_to "Remove", pokemon_path(@pokemon.id), method: :delete, data: { confirm: "remove #{@pokemon.name}?" }, class: 'btn btn-danger'%></p> -->
 
 		 <p><%= link_to 'Go Back', pokemons_path, class: "btn btn-info" %></p>
+     <br>
 <!-- 	 </div>
  --></div>
 

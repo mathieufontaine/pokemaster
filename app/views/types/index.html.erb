@@ -1,0 +1,23 @@
+<div class = "container">
+  <h1 class="text-center" >Types Index</h1>
+  
+	<table class="table">
+		<thead class="thead-dark"  id = "sticky-header">
+	  <tr>
+	    <th scope="col">#</th>
+	    <th scope="col">Name</th>
+	    <th class ="text-center" scope="col">Number of Pokemons</th>  
+	    <th class ="text-center" scope="col">Number of Moves</th>
+	  </tr>
+	</thead>
+	  <% @types.each do |type| %>
+	    <tr>
+	      <th scope="row"><%=type.id%></th>
+	      <td><%= link_to type.name.capitalize, type_path(type.id) %></td>
+	      <td class ="text-center"><strong><%=type.pokemons.size%></strong></td>
+	      <td class ="text-center"><strong><%=type.attacks.size%></strong></td>
+	    </tr>
+	  <%end%>
+	</table>
+
+</div>

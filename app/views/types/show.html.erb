@@ -1,0 +1,94 @@
+
+<div class= "container">
+<h1><strong>#</strong><%=@type.id%>. <%= @type.name.capitalize %></h1>
+
+
+<table class="table">
+    <tbody>
+        <tr>
+          <th>Number of Pokemons</th>
+            <td><%=@type.pokemons.size%></td>
+        </tr>
+        <tr>
+          <th>Number of Moves</th>
+            <td><%=@type.attacks.size%></td>
+        </tr>
+    </tbody>
+</table>
+
+<% if @type.pokemons.any? %>
+
+	<h2>Pokémons</h2>
+
+	<table class="table">
+		<thead class="thead-dark"  id = "sticky-header">
+	  <tr>
+	    <th scope="col">#</th>
+	    <th scope="col">Pokemon</th>
+	    <th scope="col">Type</th>
+	    <th scope="col">Location</th>  
+	    <th class ="text-center" scope="col">Height</th>
+	    <th class ="text-center" scope="col">Weight</th>
+	    <% if user_signed_in? && current_user.pokedex.present?%>
+	    <th class ="text-center" scope="col">Add to my Pokédex</th>
+	     <% end %>
+	  </tr>
+	</thead>
+	  <% @type.pokemons.each do |pokemon| %>
+	    <tr>
+	      <th scope="row"><%=pokemon.id%></th>
+	      <td><%= link_to pokemon.name, pokemon_path(pokemon.id) %></td>
+	      <td><%=pokemon.type.name%></td>
+	      <td><%=pokemon.location%></td>
+	      <td class ="text-center"><%=(pokemon.height)/10%> m</td>
+	      <td class ="text-center"><%=(pokemon.weight)/10%> kg</td>
+
+	      <% if user_signed_in? && current_user.pokedex.present?%>
+	        <% if current_user.pokedex.pokemons.include?(pokemon)%>
+	          <td scope="col-3" class ="text-center" id="pokeball"><%= image_tag "logo.png", class:"embed-responsive-item"%></td>
+	        <% else%>
+	          <td scope="col-3" class="text-center plus-column">
+	              <%= link_to "+", trainer_pokedex_pokemon_path(current_user.pokedex.id, pokemon.id), method: :post ,class:"btn btn-success"%></td>
+	        <%end%>
+	      <%end%>
+	    </tr>
+	  <%end%>
+	</table>
+
+<% end %>
+
+<% if @type.attacks.any? %>
+
+<h2>Moves</h2>
+
+	<table class="table">
+		<thead class="thead-dark"  id = "sticky-header">
+		  <tr>
+		    <th scope="col">#</th>
+		    <th scope="col">Name</th>
+		    <th scope="col">Type</th>
+		    <th class ="text-center" scope="col">Power</th>  
+		    <th class ="text-center" scope="col">Accuracy</th>
+		    <th class ="text-center" scope="col">PP</th>
+		  </tr>
+		</thead>
+		  <% @type.attacks.each do |attack| %>
+		    <tr>
+		      <th scope="row"><%=attack.id%></th>
+		      <td><%= link_to attack.name, attack_path(attack.id) %></td>
+		      <td><%=attack.type.name%></td>
+		      <td class ="text-center"><strong><%=attack.power%></strong></td>
+		      <td class ="text-center"><%=attack.precision%></td>
+		      <td class ="text-center"><%=attack.power_point%></td>
+		    </tr>
+		  <%end%>
+	</table>
+
+<% end %>
+
+
+		 <p><%= link_to 'Go Back', types_path, class: "btn btn-info" %></p>
+<!-- 	 </div>
+ --></div>
+
+
