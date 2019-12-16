@@ -62,20 +62,47 @@
             <td><%=@pokemon.type.name.capitalize %></td>
         </tr>
         <tr>
+          <th>Power Score</th>
+            <td><%= @pokemon.total %></td>
+        </tr>
+        <tr>
+          <th>HP</th>
+            <td><%= @pokemon.HP%></td>
+        </tr>
+          <th>Attack</th>
+            <td><%= @pokemon.attack %></td>
+        </tr>
+        </tr>
+          <th>Defense</th>
+            <td><%= @pokemon.defense %></td>
+        </tr>
+        </tr>
+          <th>Sp. Atk</th>
+            <td><%= @pokemon.special_attack %></td>
+        </tr>
+        </tr>
+          <th>Sp. Def</th>
+            <td><%= @pokemon.special_attack %></td>
+        </tr>
+        </tr>
+          <th>Speed</th>
+            <td><%= @pokemon.speed%></td>
+        </tr>
+        <tr>
           <th>Location</th>
             <td><%=@pokemon.location%></td>
         </tr>
-        <tr>
+<!--         <tr>
           <th>Height</th>
-            <td><%=(@pokemon.height)/10%> m </td>
+            <td><%=(@pokemon.height)%> m </td>
         </tr>
         <tr>
           <th>Weight</th>
-            <td><%=(@pokemon.weight)/10%> kg </td>
+            <td><%=(@pokemon.weight)%> kg </td>
         </tr>
           <th>Evolution</th>
             <td>Yes</td>
-        </tr>
+        </tr> -->
     </tbody>
 </table>
 
@@ -86,7 +113,7 @@
 
 <h3>All <%= @pokemon.type.name.capitalize %> Moves</h3>
 
-  <table class="table">
+  <table class="table sortable">
 
     <% case @pokemon.type.name %>
 <% when "bug" %>

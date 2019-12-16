@@ -6,11 +6,19 @@ class PokedexesController < ApplicationController
 
   def index
   	@pokedexes = policy_scope(Pokedex).sort {|a,b| b.pokemons.count <=> a.pokemons.count}
+    
+    @pokedexes.each do |pokedex|
+    @total_power = pokedex_power(pokedex)
+    end
   end
-  	
+  
+
   def show
     @pokedex = Pokedex.find(params[:id])
     @pokemons = policy_scope(Pokemon).where(pokedex: @pokedex)
+
+    @total_power = pokedex_power(@pokedex)
+
   end
 
   def new
@@ -32,6 +40,20 @@ class PokedexesController < ApplicationController
     end
   end
 
+  def pokedexes_power(pokedexes)
+    pokedexes.each do |poke|
+    pokedex_power(poke)
+    end
+  end
+
+
+  def pokedex_power(pokedex)
+    array = []
+    pokedex.pokemons.each do |pokemon|
+      array << pokemon.total
+    end
+    array.inject(0){|sum,x| sum + x }
+  end
 
 
 

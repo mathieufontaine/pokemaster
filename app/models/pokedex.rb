@@ -6,4 +6,17 @@ class Pokedex < ApplicationRecord
 	def is_trainer?(user)
 	  self.user == user
 	end
+
+
+
+
+  # def pokedex_power(pokemons)
+  #   array = []
+  #   self.pokemons.each do |pokemon|
+  #     array << pokemon.total
+  #   end
+  #   array.inject(0){|sum,x| sum + x }
+  # end
+
+
 end

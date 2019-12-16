@@ -64,7 +64,7 @@
 
 	<h2>Pokémons</h2>
 
-	<table class="table">
+	<table class="table sortable">
 	    <% case @type.name %>
 		<% when "bug" %>
 		  <thead class="thead" id = "bug-header">
@@ -109,9 +109,10 @@
 	    <th scope="col">#</th>
 	    <th scope="col">Pokemon</th>
 	    <th scope="col">Type</th>
-	    <th scope="col">Location</th>  
-	    <th class ="text-center" scope="col">Height</th>
-	    <th class ="text-center" scope="col">Weight</th>
+	    <!--     <th class ="text-center" scope="col">Height</th>
+	        <th class ="text-center" scope="col">Weight</th> -->
+	        <th class ="text-center" scope="col">Power Score</th>  
+	        <th class ="text-center" scope="col">Location</th>  
 	    <% if user_signed_in? && current_user.pokedex.present?%>
 	    <th class ="text-center" scope="col">Add to my Pokédex</th>
 	     <% end %>
@@ -121,11 +122,11 @@
 	    <tr>
 	      <th scope="row"><%=pokemon.id%></th>
 	      <td><%= link_to pokemon.name, pokemon_path(pokemon.id) %></td>
-	      <td><%=pokemon.type.name%></td>
-	      <td><%=pokemon.location%></td>
-	      <td class ="text-center"><%=(pokemon.height)/10%> m</td>
-	      <td class ="text-center"><%=(pokemon.weight)/10%> kg</td>
-
+	      <td><%=pokemon.type.name.capitalize%></td>
+	<!--  <td class ="text-center"><%=(pokemon.height)%> m</td>
+	      <td class ="text-center"><%=(pokemon.weight)%> kg</td> -->
+	      <td class ="text-center"><%=pokemon.total%></td>
+	      <td class ="text-center"><%=pokemon.location%></td>
 	      <% if user_signed_in? && current_user.pokedex.present?%>
 	        <% if current_user.pokedex.pokemons.include?(pokemon)%>
 	          <td scope="col-3" class ="text-center" id="pokeball"><%= image_tag "logo.png", class:"embed-responsive-item"%></td>

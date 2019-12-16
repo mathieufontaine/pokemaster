@@ -20,24 +20,56 @@ Pokemon.destroy_all
 Type.destroy_all
 
 
-url_types = "https://pokeapi.co/api/v2/type"
-types = open(url_types).read
-types_array = JSON.parse(types)["results"]
+
+
+
+puts 'Creating Users...'
+
+User.create!(username: "Mat", email: "mathieu@mathieu.com", password: "password", avatar: "pika1.png", role: "trainer")
+User.create!(username: "Arthur", email: "arthur@arthur.com", password: "password", avatar: "avatar0.png", role: "trainer")
+User.create!(username: "John", email: "john@john.com", password: "password", avatar: "avatar1.png", role: "trainer")
+User.create!(username: "Mike", email: "mike@mike.com", password: "password", avatar: "avatar2.png", role: "user")
+User.create!(username: "Brian", email: "brian@brian.com", password: "password", avatar: "avatar3.png", role: "trainer")
+User.create!(username: "Jojo", email: "jojo@jojo.com", password: "password", avatar: "avatar3.png", role: "user")
+User.create!(username: "Kate", email: "kate@kate.com", password: "password", avatar: "avatar5.png", role: "trainer")
+User.create!(username: "Sam", email: "sam@sam.com",password: "password", avatar: "carapuce.png", role: "trainer")
+User.create!(username: "Sarah", email: "sarah@sarah.com", password: "password", avatar: "avatar6.png", role: "user")
+
 
 
 puts 'Creating types of Pokémons...'
 
-types_array.each do |type|
-	Type.create!(
-	name: type["name"])
-end
 
 
+# url_types = "https://pokeapi.co/api/v2/type"
+# types = open(url_types).read
+# types_array = JSON.parse(types)["results"]
 
 
+# types_array.each do |type|
+# 	Type.create!(
+# 	name: type["name"])
+# end
 
+Type.create!(name: 'normal')
+Type.create!(name: 'water')
+Type.create!(name: 'electric')
+Type.create!(name: 'fighting')
+Type.create!(name: 'ground')
+Type.create!(name: 'psychic')
+Type.create!(name: 'fire')
+Type.create!(name: 'grass')
+Type.create!(name: 'ice')
+Type.create!(name: 'rock')
+Type.create!(name: 'poison')
+Type.create!(name: 'flying')
+Type.create!(name: 'bug')
+Type.create!(name: 'ghost')
+Type.create!(name: 'dragon')
 
-
+Type.create!(name: 'steel')
+Type.create!(name: 'fairy')
+Type.create!(name: 'dark')
 
 
 # url_moves = "https://pokeapi.co/api/v2/move"
@@ -54,17 +86,10 @@ end
 
 
 
-# puts 'Creating moves...'
 
 
-# moves_array.each do |type|
-# 	Attack.create!(
-# 	name: type["name"],
-# 	)
-# end
 
 puts 'Creating Pokémons...'
-
 
 
 # poke_ids = []
@@ -97,21 +122,22 @@ CSV.foreach('./db/pokemon.csv', :headers => true, :col_sep => ',') do |row|
   Pokemon.create(
   	number: row[0],
     name: row[1],
-    total: row[5],
-	HP: row[6],
-	attack: row[7],
-	defense: row[8],
-	special_attack: row[9],
-	special_defense: row[10],
-	speed: row[11],
-	type: Type.all.sample)
+    total: row[4],
+	HP: row[5],
+	attack: row[6],
+	defense: row[7],
+	special_attack: row[8],
+	special_defense: row[9],
+	speed: row[10],
+	location: Faker::Games::Pokemon.location,
+	type_id: row[2].to_i)
 end
 
 
 puts 'Creating moves...'
 
 moves_ids = []
-for i in 1..40
+for i in 1..10
 	moves_ids << i	
 end
 
@@ -127,6 +153,16 @@ Attack.create!(
 		type: Type.all.sample)
 
 end
+
+
+# puts 'Creating moves...'
+
+
+# moves_array.each do |type|
+# 	Attack.create!(
+# 	name: type["name"],
+# 	)
+# end
 
 
 # pokemons_array.each do |pokemon|
