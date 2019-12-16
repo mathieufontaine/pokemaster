@@ -16,9 +16,9 @@
         <th scope="col">#</th>
         <th scope="col">Pokemon</th>
         <th scope="col">Type</th>
-        <th scope="col">Location</th>  
         <th class ="text-center" scope="col">Height</th>
         <th class ="text-center" scope="col">Weight</th>
+        <th scope="col">Location</th>  
         <th class ="text-center" scope="col">Gotcha</th>
       </tr>
     </thead>
@@ -26,10 +26,50 @@
         <tr>
           <th scope="row"><%=pokemon.id%></th>
           <td><%= link_to pokemon.name, pokemon_path(pokemon.id) %></td>
-          <td><%=pokemon.type.name%></td>
-          <td><%=pokemon.location%></td>
+          <% case pokemon.type.name %>
+            <% when "bug" %>
+              <td class ="text-center type-header" id = "bug-header">
+            <% when "dark" %>
+              <td class ="text-center type-header" id = "dark-header">
+            <% when "dragon" %>
+              <td class ="text-center type-header" id = "dragon-header">
+            <% when "electric" %>
+              <td class ="text-center type-header" id = "electric-header">
+            <% when "fairy" %>
+              <td class ="text-center type-header" id = "fairy-header">
+            <% when "fighting" %>
+              <td class ="text-center type-header" id = "fighting-header">
+            <% when "fire" %>
+              <td class ="text-center type-header" id = "fire-header">
+            <% when "flying" %>
+              <td class ="text-center type-header" id = "flying-header">
+            <% when "ghost" %>
+              <td class ="text-center type-header" id = "ghost-header">
+            <% when "grass" %>
+              <td class ="text-center type-header" id = "grass-header">
+            <% when "ground" %>
+              <td class ="text-center type-header" id = "ground-header">
+            <% when "ice" %>
+              <td class ="text-center type-header" id = "ice-header">
+            <% when "normal" %>
+              <td class ="text-center type-header" id = "normal-header">
+            <% when "poison" %>
+              <td class ="text-center type-header" id = "poison-header">
+            <% when "psychic" %>
+              <td class ="text-center type-header" id = "psychic-header">
+            <% when "rock" %>
+              <td class ="text-center type-header" id = "rock-header">
+            <% when "steel" %>
+              <td class ="text-center type-header" id = "steel-header">
+            <% when "water" %>
+              <td class ="text-center type-header" id = "water-header">
+            <%else%>
+              <td class ="text-center">
+            <% end %>
+            <%=pokemon.type.name.capitalize %></td>
           <td class ="text-center"><%=(pokemon.height)/10%> m </td>
           <td class ="text-center"><%=(pokemon.weight)/10%> kg</td>
+          <td class ="text-center"><%=pokemon.location%></td>
           <td class ="text-center" id="pokeball"><%= image_tag "logo.png", class:"embed-responsive-item"%>
           	</td>
         </tr>

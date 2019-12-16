@@ -27,15 +27,15 @@
   <br>
 
 
-<table class="table">
+<table class="table sortable">
 	<thead class="thead-dark"  id = "sticky-header">
   <tr>
     <th scope="col">#</th>
     <th scope="col">Pokemon</th>
     <th class ="text-center" scope="col">Type</th>
-    <th class ="text-center" scope="col">Location</th>  
     <th class ="text-center" scope="col">Height</th>
     <th class ="text-center" scope="col">Weight</th>
+    <th class ="text-center" scope="col-2">Location</th>  
     <% if user_signed_in? && current_user.pokedex.present?%>
     <th class ="text-center" scope="col">Add to my Pokédex</th>
       <% end %>
@@ -87,13 +87,12 @@
             <td class ="text-center">
           <% end %>
       <%=pokemon.type.name.capitalize%></td>
-      <td class ="text-center"><%=pokemon.location%></td>
       <td class ="text-center"><%=(pokemon.height)/10%> m</td>
-      <td class ="text-center"><%=(pokemon.weight)/10%> kg</td>
-
+      <td class ="text-center" scope="col-2"><%=(pokemon.weight)/10%> kg</td>
+      <td class="text-center"><%=pokemon.location%></td>
       <% if user_signed_in? && current_user.pokedex.present?%>
         <% if current_user.pokedex.pokemons.include?(pokemon)%>
-          <td scope="col-3" class ="text-center" id="pokeball"><%= image_tag "logo.png", class:"embed-responsive-item"%></td>
+          <td class ="text-center" id="pokeball"><%= image_tag "logo.png", class:"embed-responsive-item"%></td>
         <% else%>
           <td scope="col-3" class="text-center plus-column">
               <%= link_to "+", trainer_pokedex_pokemon_path(current_user.pokedex.id, pokemon.id), method: :post ,class:"btn btn-success"%></td>

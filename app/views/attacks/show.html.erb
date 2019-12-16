@@ -1,13 +1,55 @@
 
 <div class= "container">
-<h1><strong>#</strong><%=@attack.id%>. <%= @attack.name %></h1>
+<br>
+    <% case @attack.type.name %>
+    <% when "bug" %>
+      <div class= "d-flex justify-content-between" id = "bug-header">
+    <% when "dark" %>
+      <div class= "d-flex justify-content-between" id = "dark-header">
+    <% when "dragon" %>
+      <div class= "d-flex justify-content-between" id = "dragon-header">
+    <% when "electric" %>
+      <div class= "d-flex justify-content-between" id = "electric-header">
+    <% when "fairy" %>
+      <div class= "d-flex justify-content-between" id = "fairy-header">
+    <% when "fighting" %>
+      <div class= "d-flex justify-content-between" id = "fighting-header">
+    <% when "fire" %>
+      <div class= "d-flex justify-content-between" id = "fire-header">
+    <% when "flying" %>
+      <div class= "d-flex justify-content-between" id = "flying-header">
+    <% when "ghost" %>
+      <div class= "d-flex justify-content-between" id = "ghost-header">
+    <% when "grass" %>
+      <div class= "d-flex justify-content-between" id = "grass-header">
+    <% when "ground" %>
+      <div class= "d-flex justify-content-between" id = "ground-header">
+    <% when "ice" %>
+      <div class= "d-flex justify-content-between" id = "ice-header">
+    <% when "normal" %>
+      <div class= "d-flex justify-content-between" id = "normal-header">
+    <% when "poison" %>
+      <div class= "d-flex justify-content-between" id = "poison-header">
+    <% when "psychic" %>
+      <div class= "d-flex justify-content-between" id = "psychic-header">
+    <% when "rock" %>
+      <div class= "d-flex justify-content-between" id = "rock-header">
+    <% when "steel" %>
+      <div class= "d-flex justify-content-between" id = "steel-header">
+    <% when "water" %>
+      <div class= "d-flex justify-content-between" id = "water-header">
+    <%else%>
+      <div class= "d-flex justify-content-between">
+    <% end %>
+    <h1 style="color:white"><strong>#</strong><%=@attack.id%>. <%= @attack.name %></h1>
 
+    </div>
 
 <table class="table">
     <tbody>
         <tr>
           <th>Type</th>
-            <td><%=@attack.type.name%></td>
+            <td><%=@attack.type.name.capitalize%></td>
         </tr>
         <tr>
           <th>Power</th>

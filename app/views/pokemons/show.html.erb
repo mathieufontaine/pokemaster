@@ -60,7 +60,7 @@
     <tbody>
         <tr>
           <th>Type</th>
-            <td><%=@pokemon.type.name%></td>
+            <td><%=@pokemon.type.name.capitalize %></td>
         </tr>
         <tr>
           <th>Location</th>
@@ -142,7 +142,7 @@
         <tr>
           <th scope="row"><%=attack.id%></th>
           <td><%= link_to attack.name, attack_path(attack.id) %></td>
-          <td><%=attack.type.name%></td>
+          <td><%=attack.type.name.capitalize%></td>
           <td class ="text-center"><strong><%=attack.power%></strong></td>
           <td class ="text-center"><%=attack.precision%></td>
           <td class ="text-center"><%=attack.power_point%></td>
