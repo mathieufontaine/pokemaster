@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_14_155907) do
+ActiveRecord::Schema.define(version: 2019_12_16_171653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(version: 2019_12_14_155907) do
     t.string "location"
     t.integer "number"
     t.boolean "caught", default: false
+    t.integer "HP"
+    t.integer "attack"
+    t.integer "defense"
+    t.integer "special_attack"
+    t.integer "special_defense"
+    t.integer "speed"
+    t.integer "total"
     t.index ["type_id"], name: "index_pokemons_on_type_id"
   end
 
