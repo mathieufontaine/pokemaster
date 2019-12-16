@@ -25,7 +25,7 @@
 
   <br>
 
-	<table class="table">
+	<table class="table sortable">
 		<thead class="thead-dark"  id = "sticky-header">
 	  <tr>
 	    <th scope="col">#</th>
@@ -79,7 +79,7 @@
 	            <td class ="text-center type-header" id = "water-header">
 	          <%else%>
 	            <td class ="text-center">
-	          <% end %><%=attack.type.name%></td>
+	          <% end %><%=attack.type.name.capitalize %></td>
 	      <td class ="text-center"><strong><%=attack.power%></strong></td>
 	      <td class ="text-center"><%=attack.precision%></td>
 	      <td class ="text-center"><%=attack.power_point%></td>

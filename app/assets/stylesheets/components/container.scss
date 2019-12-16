@@ -1,0 +1,20 @@
+body{
+ background-image:
+ url("https://labmap.files.wordpress.com/2016/09/pokemon-we-really-want-to-eat.jpg");
+ background-repeat:no-repeat;
+ background-attachment:fixed;
+ background-size: cover;
+}
+
+.container {
+	// background-color: white;
+  background-color: rgba(255,255,255,0.94);
+  background-blend-mode: lighten;
+  height: 100%;
+  min-height: 100vh
+}
+
+.container h1{
+	padding: 30px;
+	color: #353A40
+}
