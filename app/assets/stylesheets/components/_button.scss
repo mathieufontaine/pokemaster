@@ -24,9 +24,18 @@ color: white;
 border: 1px solid red
 }
 
+.main-button {
+background-color: $dark-gray;
+color: white;
+}
+.main-button:hover {
+background-color: white;
+color: $dark-gray;
+}
+
 .main-color{
 	background-color: white ;
-	color: $dark-blue !important;
+	color: $dark-gray !important;
 }
 
 .main-color:hover{
@@ -37,7 +46,7 @@ border: 1px solid red
 .main-color-two{
 	// background-color: white ;
 	// outline: 1px solid $dark-red;
-	color: $dark-blue !important;
+	color: $dark-gray !important;
 }
 
 .main-color-two:hover{
@@ -46,10 +55,10 @@ border: 1px solid red
 }
 
 #login-button {
-	color: $electric;
+	color: white;
 	font-weight: bold
 }
 
 #login-button:hover {
-	color: $dark-red;
+	color: $yellow;
 }

@@ -34,13 +34,22 @@ margin-left: 50px
 
 .nav-item.tab a{
 color:white !important;
-font-size: 18px
+font-size: 18px;
+font-weight: bold;
 }
 
-.nav-item.tab:hover a{
+.nav-item.tab.yellow-tab:hover a{
   color:  $yellow !important;
-  font-weight: bold;
 }
 
+.nav-item.tab.dark-red-tab:hover a{
+  color:  $dark-red !important;
+}
 
+.nav-item.tab.light-gray-tab:hover a{
+  color:  $gray !important;
+}
 
+.nav-item.tab.dark-gray-tab:hover a{
+  color:  $dark-gray !important;
+}

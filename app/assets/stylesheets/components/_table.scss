@@ -1,9 +1,9 @@
 table a {
-color: $dark-blue;
+color: $dark-gray;
 font-weight: bold
 }
 
-table a:hover {
+table > a:hover {
 color: $dark-red;
 }
 
@@ -24,14 +24,16 @@ text-decoration: none
 }
 
 .table{
-	color: $dark-blue
+	color: $dark-gray
 }
 .location {
 display: inline-block;
 text-align:left;
 }
 
-#sticky-header {
-	background-color:  $dark-red;
-	color: white
-}
+// #sticky-header {
+// 	background-color:  $dark-red;
+// 	color: white
+// }
+
+
