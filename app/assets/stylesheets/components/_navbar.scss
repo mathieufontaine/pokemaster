@@ -11,10 +11,10 @@ font-size: 30px !important;
 color:white !important;
 }
 
-#navbarSupportedContent a{
-color:white !important;
-font-size: 18px
-}
+// #navbarSupportedContent a{
+// color:white ;
+// font-size: 18px
+// }
 
 // .navbar-lewagon .navbar-collapse {
 //   flex-grow: 0;
@@ -32,6 +32,15 @@ margin-left: 50px
 	padding: 0px 10px
 }
 
-.nav-item:hover {
-  text-decoration-line: underline;
+.nav-item.tab a{
+color:white !important;
+font-size: 18px
 }
+
+.nav-item.tab:hover a{
+  color: #353A40 !important;
+  font-weight: bold;
+}
+
+
+

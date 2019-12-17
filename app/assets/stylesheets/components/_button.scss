@@ -23,3 +23,23 @@ background-color: red;
 color: white;
 border: 1px solid red
 }
+
+.main-color:hover{
+	background-color: $dark-blue;
+	color: white !important;
+}
+
+.main-color{
+	background-color: white ;
+	color: $dark-blue !important;
+}
+
+#login-button {
+	color: $dark-blue;
+	font-weight: bold
+}
+
+#login-button:hover {
+	color: white;
+	font-weight: bold
+}

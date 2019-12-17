@@ -10,24 +10,24 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item active tab">
           <%= link_to "Home", pokemons_path, class: "nav-link" %>
-        <li class="nav-item">
+        <li class="nav-item tab ">
           <%= link_to "Pokédex Ladder", pokedexes_path, class: "nav-link" %>
         </li>
-        </li>
+        <li class="nav-item tab">
           <%= link_to "Pokémons", pokemons_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item tab">
           <%= link_to "Types", types_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item tab">
           <%= link_to "Moves", attacks_path, class: "nav-link" %>
         </li>
 
         <% if !user_signed_in? || (user_signed_in? && !current_user.pokedex.present?)%>
         <li class="nav-item">
-          <%= link_to "Create My Pokedex", new_pokedex_path, class: "nav-link btn-success" %>
+          <%= link_to "Create My Pokedex", new_pokedex_path, class: "nav-link btn main-color" %>
         </li>
         <%end%>
     </ul>
@@ -55,7 +55,7 @@
           </div>
         <% else %>
           <div class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Login", new_user_session_path, class: "nav-link", id:"login-button" %>
         <% end %>
         </div>
     </div>
