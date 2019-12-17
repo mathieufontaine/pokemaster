@@ -1,36 +1,38 @@
 <div class = "container">
-  <h1 class="text-center" >Moves Index</h1>
+  <h1>Moves Index</h1>
   
-  <div class="d-flex justify-content-center">
-    
-    <div class="search-bar">
-      <%= form_tag attacks_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Search for a move, type of move, power"
-        %>
-    </div>
-    <div>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    </div>
-    <% end %>
-    <div class="ml-2">
-        <%= form_tag attacks_path, method: :get do %>
-        <%= submit_tag "All the Moves", class: "btn btn-info"%>
-    <% end %>
-    </div>
+  <div class ="d-flex justify-content-between">
+    <div class="d-flex justify-content-start">
+	     <div class="search-bar">
 
+	      <%= form_tag attacks_path, method: :get do %>
+	        <%= text_field_tag :query,
+	          params[:query],
+	          class: "form-control",
+	          placeholder: "Search for a move, type of move, power"
+	        %>
+	    </div>
+	    <div>
+	      <%= submit_tag "Search", class: "btn btn-secondary" %>
+	    </div>
+	    <% end %>
+		</div>
+
+	    <div class="ml-2">
+	        <%= form_tag attacks_path, method: :get do %>
+	        <%= submit_tag "See all the Moves", class: "btn main-color-two font-weight-bold"%>
+	    <% end %>
+	    </div>
   </div>
-
-  <br>
+  	<br>
 
 	<table class="table sortable">
-		<thead class="thead-dark"  id = "sticky-header">
+		<thead class="thead"  id = "sticky-header">
 	  <tr>
 	    <th scope="col">#</th>
 	    <th scope="col">Name</th>
 	    <th class ="text-center" scope="col">Type</th>
+	    <th class ="text-center" scope="col">Kind</th>
 	    <th class ="text-center" scope="col">Power</th>  
 	    <th class ="text-center" scope="col">Accuracy</th>
 	    <th class ="text-center" scope="col">PP</th>
@@ -79,9 +81,10 @@
 	            <td class ="text-center type-header" id = "water-header">
 	          <%else%>
 	            <td class ="text-center">
-	          <% end %><%=attack.type.name.capitalize %></td>
+	          <% end %><%=link_to attack.type.name.capitalize, type_path(attack.type.id)  %></td>
+	      <td class ="text-center"><%=attack.kind%></td>
 	      <td class ="text-center"><strong><%=attack.power%></strong></td>
-	      <td class ="text-center"><%=attack.precision%></td>
+	      <td class ="text-center"><%=attack.precision%> %</td>
 	      <td class ="text-center"><%=attack.power_point%></td>
 	    </tr>
 	  <%end%>

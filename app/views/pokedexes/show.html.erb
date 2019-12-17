@@ -6,7 +6,7 @@
     </div>
 
     <div class="d-flex justify-content-between align-items-center">
-    <h4 class= "mt-2"> You have <strong><%= @pokedex.pokemons.size %> Pokémons </strong> in your Pokédex!</h4>
+    <h4 class= "mt-2"> Number of Pokémons: <strong><%= @pokedex.pokemons.size %> Pokémons </strong></h4>
       <% if @pokedex.is_trainer?(current_user) %>
       <%= link_to 'Add more Pokémons', pokemons_path, class: "btn btn-success" %>
       <% end %>
@@ -69,7 +69,7 @@
             <%else%>
               <td class ="text-center">
             <% end %>
-            <%=pokemon.type.name.capitalize %></td>
+            <%=link_to pokemon.type.name.capitalize, type_path(pokemon.type)%></td>
     <!--  <td class ="text-center"><%=(pokemon.height)%> m</td>
           <td class ="text-center"><%=(pokemon.weight)%> kg</td> -->
           <td class ="text-center"><%=pokemon.total%></td>

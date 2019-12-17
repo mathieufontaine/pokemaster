@@ -1,6 +1,10 @@
 table a {
-color: #353A40;
+color: $dark-blue;
 font-weight: bold
+}
+
+table a:hover {
+color: $dark-red;
 }
 
 table a:hover {
@@ -19,7 +23,15 @@ text-decoration: none
   vertical-align: middle;
 }
 
+.table{
+	color: $dark-blue
+}
 .location {
 display: inline-block;
 text-align:left;
+}
+
+#sticky-header {
+	background-color:  $dark-red;
+	color: white
 }

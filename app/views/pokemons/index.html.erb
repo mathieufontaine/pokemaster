@@ -1,34 +1,35 @@
 <div class = "container">
-<div class="text-center">
+<!-- <div class="text-center">
+ --><!-- 
+ -->  <h1>Pokémons Index</h1>
 
-  <h1>Pokémons Index</h1>
+<!-- </div> -->
 
-</div>
-  <div class="d-flex justify-content-center">
-    <div class="search-bar">
-      <%= form_tag pokemons_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Search for a pokémon, type, location, etc.."
-        %>
-    </div>
-    <div>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    </div>
-    <% end %>
-      <div class="ml-2">
+  <div class ="d-flex justify-content-between">
+    <div class="d-flex justify-content-start">
+      <div class="search-bar">
         <%= form_tag pokemons_path, method: :get do %>
-        <%= submit_tag "All the Pokémons", class: "btn btn-info"%>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Search for a pokémon, type, location, etc.."
+          %>
+      </div>
+      <div>
+        <%= submit_tag "Search", class: "btn btn-info" %>
+      </div>
+      <% end %>
+    </div>
+     <div class="ml-2">
+        <%= form_tag pokemons_path, method: :get do %>
+        <%= submit_tag "View all the Pokémons", class: "btn main-color-two font-weight-bold"%>
     <% end %>
     </div>
-
   </div>
-  <br>
-
+<br>
 
 <table class="table sortable">
-	<thead class="thead-dark"  id = "sticky-header">
+	<thead class="thead"  id = "sticky-header">
   <tr>
     <th scope="col">#</th>
     <th scope="col">Pokemon</th>

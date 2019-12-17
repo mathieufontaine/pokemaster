@@ -24,22 +24,32 @@ color: white;
 border: 1px solid red
 }
 
-.main-color:hover{
-	background-color: $dark-blue;
-	color: white !important;
-}
-
 .main-color{
 	background-color: white ;
 	color: $dark-blue !important;
 }
 
+.main-color:hover{
+	background-color:  #B1485B;
+	color: white !important;
+}
+
+.main-color-two{
+	// background-color: white ;
+	// outline: 1px solid $dark-red;
+	color: $dark-blue !important;
+}
+
+.main-color-two:hover{
+	// background-color:  #B1485B;
+	color: $dark-red !important;
+}
+
 #login-button {
-	color: $dark-blue;
+	color: $electric;
 	font-weight: bold
 }
 
 #login-button:hover {
-	color: white;
-	font-weight: bold
+	color: $dark-red;
 }

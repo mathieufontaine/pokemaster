@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_16_171653) do
+ActiveRecord::Schema.define(version: 2019_12_17_171503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2019_12_16_171653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "power_point"
+    t.text "effect"
+    t.string "kind"
     t.index ["type_id"], name: "index_attacks_on_type_id"
   end
 

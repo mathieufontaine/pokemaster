@@ -1,7 +1,7 @@
 .navbar-lewagon {
   display: flex;
   justify-content: space-between;
-  background: #B1485B;
+  background: #353A40;
   position: sticky;
   top:0;
 }
@@ -38,7 +38,7 @@ font-size: 18px
 }
 
 .nav-item.tab:hover a{
-  color: #353A40 !important;
+  color:  $yellow !important;
   font-weight: bold;
 }
 

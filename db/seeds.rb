@@ -18,6 +18,7 @@ puts 'Cleaning database...'
 # Team.destroy_all
 Pokemon.destroy_all
 Type.destroy_all
+Attack.destroy_all
 
 
 
@@ -66,6 +67,7 @@ Type.create!(name: 'flying')
 Type.create!(name: 'bug')
 Type.create!(name: 'ghost')
 Type.create!(name: 'dragon')
+
 
 Type.create!(name: 'steel')
 Type.create!(name: 'fairy')
@@ -136,23 +138,37 @@ end
 
 puts 'Creating moves...'
 
-moves_ids = []
-for i in 1..10
-	moves_ids << i	
+
+CSV.foreach('./db/moves.csv', :headers => true, :col_sep => ',') do |row|
+  Attack.create(
+    name: row[1],
+	effect: row[2],
+	type_id: row[3],
+	kind: row[4],
+	power: row[5],
+	precision: row[6],
+	power_point: row[7])
 end
 
-moves_ids.each do |id|
-url = "https://pokeapi.co/api/v2/move/#{id}"
-move = JSON.parse(open(url).read)
-Attack.create!(
-		name: move["name"].capitalize,
-		# picture: pokemon["url"],
-		precision: move["accuracy"],
-		power: move["power"],
-		power_point: move["pp"],
-		type: Type.all.sample)
 
-end
+
+# moves_ids = []
+# for i in 1..10
+# 	moves_ids << i	
+# end
+
+# moves_ids.each do |id|
+# url = "https://pokeapi.co/api/v2/move/#{id}"
+# move = JSON.parse(open(url).read)
+# Attack.create!(
+# 		name: move["name"].capitalize,
+# 		# picture: pokemon["url"],
+# 		precision: move["accuracy"],
+# 		power: move["power"],
+# 		power_point: move["pp"],
+# 		type: Type.all.sample)
+
+# end
 
 
 # puts 'Creating moves...'

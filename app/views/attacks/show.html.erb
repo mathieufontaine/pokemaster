@@ -44,19 +44,27 @@
 
     </div>
 
-<table class="table">
+<table class="table storable">
     <tbody>
         <tr>
           <th>Type</th>
             <td><%=@attack.type.name.capitalize%></td>
         </tr>
         <tr>
+          <th>Effect</th>
+            <td><%=@attack.effect%></td>
+        </tr>
+        <tr>
           <th>Power</th>
             <td><%=@attack.power%></td>
         </tr>
         <tr>
+          <th>Kind</th>
+            <td><%=@attack.kind%></td>
+        </tr>
+        <tr>
           <th>Accuracy</th>
-            <td><%=@attack.precision%></td>
+            <td><%=@attack.precision%> %</td>
         </tr>
         <th>PP</th>
             <td><%=@attack.power_point%></td>
