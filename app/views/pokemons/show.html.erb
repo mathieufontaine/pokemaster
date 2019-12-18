@@ -46,9 +46,9 @@
     <div class= "d-flex align-items-center mr-4 mt-3">
         <% if user_signed_in? && current_user.pokedex.present?%>
          <% if current_user.pokedex.pokemons.include?(@pokemon)%>
-           <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Teams", pokemons_path, class: "btn bg-white round" %></p>
+         <p class ="text-center pokeball-show"><%= image_tag "logo.png", class:"embed-responsive-item"%></p>
         <% else %>
-          <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Pokédex",trainer_pokedex_pokemon_path(current_user.pokedex.id, @pokemon), method: :post, class: "btn bg-white round" %></p>
+          <p class="text-center"><%= link_to "Add #{@pokemon.name} to my Pokédex",trainer_pokedex_pokemon_path(current_user.pokedex.id, @pokemon), method: :post, class: "btn main-button" %></p>
         <% end %>
        <%end%>
     </div>

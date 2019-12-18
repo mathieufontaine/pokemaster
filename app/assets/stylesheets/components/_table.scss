@@ -15,17 +15,23 @@ text-decoration: none
   vertical-align: middle;
 }
 
-.table tbody th{
-  vertical-align: middle;
-}
+// .table tbody th{
+//   vertical-align: middle;
+// }
 
-.table tbody td{
+.table tbody td, .table tbody th{
   vertical-align: middle;
+  background-color: white
 }
 
 .table{
 	color: $dark-gray
 }
+
+#table-profile tbody td,#table-profile tbody th{
+  background: none
+}
+
 .location {
 display: inline-block;
 text-align:left;

@@ -1,4 +1,5 @@
 <div class = "container">
+  
 <div class="d-flex justify-content-between">
 	<h1> Pokédex Ladder </h1>
 <!-- 	<p id = "add-button"><%= link_to new_pokedex_path do %>
@@ -6,6 +7,7 @@
 		<% end %> -->
 	</p>
 </div>
+
 <table class="table sortable">
 	<thead class="thead dark-gray-header"  id = "sticky-header">
   <tr>
@@ -16,9 +18,9 @@
     <th class= "text-center" scope="col">Number of Pokémons</th>
     <th class= "text-center" scope="col">Power Score</th>
     <th class= "text-center" scope="col">Date of creation</th>
-
   </tr>
 </thead>
+
   <% @pokedexes.each do |pokedex| %>
     <tr>
       <th scope="row"><%=pokedex.id%></th>

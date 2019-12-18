@@ -8,7 +8,7 @@ class Trainer::PokemonsController < ApplicationController
     @pokedex.pokemons << @pokemon
     authorize @pokedex
     if @pokedex.save
-    redirect_to pokemons_path, notice: "Gotcha! #{@pokemon.name} has been added to your Pokédex"
+    redirect_to request.referrer, notice: "Gotcha! #{@pokemon.name} has been added to your Pokédex"
     end
   end
 

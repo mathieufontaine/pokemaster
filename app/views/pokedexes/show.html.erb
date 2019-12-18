@@ -29,7 +29,7 @@
     <th class ="text-center" scope="col">Weight</th> -->
     <th class ="text-center" scope="col">Points</th>  
     <th class ="text-center" scope="col">Location</th>  
-        <th class ="text-center" scope="col">Gotcha</th>
+        <th class ="text-center" scope="col">Add to a Team</th>
       </tr>
     </thead>
       <% @pokedex.pokemons.each do |pokemon| %>
@@ -81,10 +81,19 @@
           <td class ="text-center"><%=(pokemon.weight)%> kg</td> -->
           <td class ="text-center"><%=pokemon.total%></td>
           <td class ="text-center"><%=pokemon.location%></td>
-          <td class ="text-center" id="pokeball"><%= image_tag "logo.png", class:"embed-responsive-item"%></td>
+          <% if @pokedex.is_trainer?(current_user) && current_user.teams.any?%>
+            <% if current_user.teams.first.pokemons.include?(pokemon)%>
+              <td scope="col-3" class ="text-center"><%= "Team 1"%></td>
+            <% else%>
+              <td scope="col-3" class="text-center plus-column">
+                  <%= link_to "+", trainer_team_pokemon_path(current_user.teams.first.id, pokemon.id), method: :post ,class:"btn btn-primary"%></td>
+            <%end%>
+          <%end%>
         </tr>
       <%end%>
     </table>
+
+
 
 
     <div class="mb-3">
@@ -101,6 +110,6 @@
       <%end%>
     </div> 
 
-     <p><%= link_to 'Go Back', pokedexes_path, class: "btn btn-info" %></p>
-
+     <p ><%= link_to 'Go Back', pokedexes_path, class: "btn btn-info" %></p>
+    <br>
 </div>

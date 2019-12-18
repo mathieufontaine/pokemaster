@@ -28,7 +28,13 @@
 	color: white
 }
 
+.white-header{
+background-color: white;
+border: solid 1px $light-gray;
+color: $dark-gray;
+font-weight: bold
 
+}
 
 .type-header h1, .type-header a{
 color: white 
