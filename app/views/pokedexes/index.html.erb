@@ -7,7 +7,7 @@
 	</p>
 </div>
 <table class="table sortable">
-	<thead class="thead gray-header"  id = "sticky-header">
+	<thead class="thead dark-gray-header"  id = "sticky-header">
   <tr>
     <th scope="col">#</th>
     <th scope="col">Avatar</th>
@@ -26,7 +26,7 @@
       <td ><%=pokedex.user.username%></td>
       <td class= "text-center"><%= link_to pokedex.name, pokedex_path(pokedex.id) %></td>
       <td class= "text-center"><%= pokedex.pokemons.size %></td> 
-      <td class= "text-center"><% if pokedex.pokemons.present? %><%= @total_power %></td><% else %><%= 0 %><% end %>
+      <td class= "text-center"><% if pokedex.pokemons.present? %><%= @total_power %><% else %><%= 0 %><% end %></td>
       <td class= "text-center"><%= pokedex.created_at %></td>
     </tr>
   <%end%>

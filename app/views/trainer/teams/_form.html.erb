@@ -1,1 +1,19 @@
-_form.html.erb
+<%= simple_form_for([:trainer, @team]) do |f| %>
+  <% if @team.errors.any? %>
+  <div class="errors-container">
+    <ul>
+      <% @team.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>  <div class="form-group">
+    <%= f.label :Name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-actions">
+    <p><%= f.submit  "Save my Team", method: :patch, class: "btn btn-primary" %></p>
+  </div>
+  <% end %>
+    <p><%= link_to 'Back', pokedexes_path, class: "btn btn-info" %></p>
+

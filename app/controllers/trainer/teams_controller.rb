@@ -1,58 +1,74 @@
 class Trainer::TeamsController < ApplicationController
-  before_action :set_pokedex, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :skip_authorization
+
 
 
   def index
-    @pokedex_teams = @pokedex.teams
+    # @user = current_user
+    @teams = policy_scope(Team).order(:name)
+    # authorize(@user)
+  end
+
+  def show
+    @pokemons = policy_scope(Pokemon).where(team: @team)
+    # @total_power = team_power(@team)
   end
 
   def new
     @team = Team.new
+    authorize @team
   end
 
   def create
     @team = Team.new(team_params)
-    @team.pokedex = @pokedex
+    @team.user = current_user
+
     if @team.save
-      redirect_to pokedex_team_path(@pokedex, @team)
+      redirect_to trainer_teams_path(@trainer), notice: 'Gotcha! Your Team was successfully created'
     else
       render 'new'
     end
   end
 
-  def show
-    @team = Team.find_by(id: params[:id])
-    @team_pokemons = @team.pokemons.all
-  end
-
   def edit
-    @team = Team.find_by(id: params[:id])
-    @pokedex = Pokedex.find_by_id(@team.pokedex_id)
   end
 
   def update
-    @team = Team.find_by(id: params[:id])
-    @pokedex = Pokedex.find_by_id(@team.pokedex_id)
       if @team.update(team_params)
-        redirect_to pokedex_team_path(@pokedex, @team)
+        redirect_to trainer_team_path(@trainer, @team)
       else
           render 'edit'
       end
   end
 
   def destroy
-    Team.find(params[:id]).destroy
     flash[:success] = "Team deleted"
-    redirect_to pokedex_teams(@current_pokedex)
+    redirect_to trainer_teams_path(@trainer)
   end
+
+
+  def team_power(team)
+    array = []
+    team.pokemons.each do |pokemon|
+      array << pokemon.total
+    end
+    array.inject(0){|sum,x| sum + x }
+  end
+
 
   private
 
-  def set_pokedex
-    @pokedex = Pokedex.find_by(id: params[:pokedex_id])
+  def set_team
+    @team = Team.find_by(id: params[:team_id])
+    # authorize @team
   end
 
   def team_params
-    params.require(:team).permit(:pokedex_id)
+    params.require(:team).permit(:name, :user_id)
   end
+
 end
+
+
+

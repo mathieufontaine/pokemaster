@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
-  before_action :set_pokedex, only: [:show, :edit, :update, :destroy]
+   before_action :set_team, only: [:show]
+   skip_before_action :authenticate_user!, only: [:index, :show]
+   before_action :skip_authorization
 
 
   def index
@@ -20,30 +22,7 @@ class TeamsController < ApplicationController
     end
   end
 
-  def show
-    @team = Team.find_by(id: params[:id])
-  end
 
-  def edit
-    @team = Team.find_by(id: params[:id])
-    @pokedex = MyPokedex.find_by_id(@team.pokedex_id)
-  end
-
-  def update
-    @team = Team.find_by(id: params[:id])
-    @pokedex = MyPokedex.find_by_id(@team.pokedex_id)
-      if @team.update(team_params)
-        redirect_to pokedex_team_path(@pokedex, @team)
-      else
-          render 'edit'
-      end
-  end
-
-  def destroy
-    Team.find(params[:id]).destroy
-    flash[:success] = "Team deleted"
-    redirect_to pokedex_teams(@current_pokedex)
-  end
 
   private
 

@@ -18,7 +18,6 @@ class PokedexesController < ApplicationController
     @pokemons = policy_scope(Pokemon).where(pokedex: @pokedex)
 
     @total_power = pokedex_power(@pokedex)
-
   end
 
   def new

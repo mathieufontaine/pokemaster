@@ -1,2 +1,12 @@
-<h1>Team#edit</h1>
-<p>Find me in app/views/team/edit.html.erb</p>
+<div class="container">
+
+<h1>Update <%= @team.name %></h1>
+
+<%= render 'form', team: @team %>
+
+<hr>
+<%= link_to trainer_team_path(@trainer, @team) do %>
+  <i class="fa fa-history"></i> Back to Team
+<% end %>
+</div>
+

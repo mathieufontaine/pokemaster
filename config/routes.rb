@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'types/index'
   get 'types/show'
   post   "/trainer/pokedexes/:pokedex_id/pokemons/:id", to: "trainer/pokemons#create", as: :trainer_pokedex_pokemon
+  post   "/trainer/teams/:team_id/pokemons/:id", to: "trainer/pokemons#create", as: :trainer_team_pokemon
+
 
   devise_for :users
   resources :users, only: [:show]
@@ -14,13 +16,14 @@ Rails.application.routes.draw do
   resources :pokemons, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :pokedexes, only: [:index, :show, :new, :create]
   resources :attacks, only: [:index, :show]
+  # resources :teams, only: [:new, :create]
 
   namespace :trainer do
     resources :pokedexes, only: [:show, :edit, :update, :destroy] do
       resources :pokemons, only: [:new, :destroy]
     end
     resources :teams do
-      resources :pokemons, only: [:create, :destroy]
+      resources :pokemons, only: [:new, :destroy]
     end
   end
 

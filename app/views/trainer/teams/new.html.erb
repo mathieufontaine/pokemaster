@@ -1,2 +1,11 @@
-<h1>Team#new</h1>
-<p>Find me in app/views/team/new.html.erb</p>
+<div class="container">
+
+<h1>New Team</h1>
+
+<%= render 'form', team: @team %>
+
+<hr>
+<%= link_to pokedex_path(current_user.pokedex.id) do %>
+  <i class="fa fa-history"></i> Back to Pokédex
+<% end %>
+</div>

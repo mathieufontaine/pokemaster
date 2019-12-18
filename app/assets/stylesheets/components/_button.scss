@@ -33,6 +33,32 @@ background-color: white;
 color: $dark-gray;
 }
 
+.red-button {
+background-color: $dark-red;
+color: white;
+}
+
+.red-button:hover {
+background-color: white;
+color: $dark-red;
+}
+
+.outline-button {
+background-color: white;
+border: solid 2px $dark-gray;
+color: $dark-gray;
+font-weight: bold
+}
+
+.outline-button:hover {
+	background-color: $dark-gray;
+	color: $white;
+}
+
+.large-button{
+width: 100%
+}
+
 .main-color{
 	background-color: white ;
 	color: $dark-gray !important;
