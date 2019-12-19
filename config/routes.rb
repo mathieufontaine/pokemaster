@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
 
-  root to: 'pokemons#index'
+  root to: 'pages#home'
 
 
   resources :pokemons, only: [:index, :show, :new, :create, :edit, :update, :destroy]

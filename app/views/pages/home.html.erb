@@ -1,2 +1,34 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class=container>
+	
+
+<div class= d-flex>
+	
+	<div class="text-center" id="sacha-home"><%= image_tag 'sacha.png', id:"sacha" %></div>	
+    	
+	<div class="text-center" id="search-home">
+	   	<h1 >Welcome to PokéMaster!</h1>
+
+	    <div class="d-flex align-items-center justify-content-center text-center">
+
+	      <div class="search-bar">
+	        <%= form_tag pokemons_path, method: :get do %>
+	          <%= text_field_tag :query,
+	            params[:query],
+	            class: "form-control",
+	            placeholder: "Search for a pokémon, type, location, etc.."
+	          %>
+	      </div>
+
+	      <div>
+	        <%= submit_tag "Gotcha!", class: "btn btn-info" %>
+	      </div>
+	      <% end %>
+	    </div>
+
+	 </div>
+
+</div>
+
+
+
+</div>
