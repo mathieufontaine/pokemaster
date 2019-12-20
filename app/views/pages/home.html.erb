@@ -25,10 +25,29 @@
 	      <% end %>
 	    </div>
 
+	    <div id="pokedex-button"><p><%= link_to "Start Your Pokedex now!", new_pokedex_path, class: "text-center btn red-button big-button" %></p></div>
+
+
 	 </div>
 
 </div>
 
 
+<h2 class="text-center"> Find the right Pokémon, Type or Move for your Team! </h2>
+<div class="cards">
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1549588246-9a455c9c788c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)">
+    <%= link_to pokemons_path, :controller => "pokemons", :query => "Pokémons"%>
+  </div>
+
+
+ <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1549588246-9a455c9c788c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)">
+    <%= link_to types_path, :controller => "types", :query => "Types"%>
+  </div>
+
+
+   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1549588246-9a455c9c788c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)">
+    <%= link_to moves_path, :controller => "moves", :query => "Moves"%>
+  </div>
+ </div>
 
 </div>
