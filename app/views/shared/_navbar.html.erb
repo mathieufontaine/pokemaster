@@ -10,18 +10,18 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-          <li class="nav-item active tab light-gray-tab">
+          <li class="nav-item active tab yellow-tab">
             <%= link_to "Home", root_path, class: "nav-link" %>
-          <li class="nav-item tab light-gray-tab">
+          <li class="nav-item tab yellow-tab">
             <%= link_to "Pokédex Ladder", pokedexes_path, class: "nav-link" %>
           </li>
           <li class="nav-item tab yellow-tab">
             <%= link_to "Pokémons", pokemons_path, class: "nav-link" %>
           </li>
-          <li class="nav-item tab dark-red-tab">
+          <li class="nav-item tab yellow-tab">
             <%= link_to "Moves", attacks_path, class: "nav-link" %>
           </li>
-          <li class="nav-item tab light-gray-tab">
+          <li class="nav-item tab yellow-tab">
             <%= link_to "Types", types_path, class: "nav-link" %>
           </li>
           <% if !user_signed_in? || (user_signed_in? && !current_user.pokedex.present?)%>

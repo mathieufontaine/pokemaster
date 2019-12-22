@@ -1,53 +1,67 @@
-<div class=container>
-	
-
-<div class= d-flex>
-	
-	<div class="text-center" id="sacha-home"><%= image_tag 'sacha.png', id:"sacha" %></div>	
-    	
-	<div class="text-center" id="search-home">
-	   	<h1 >Welcome to PokéMaster!</h1>
-
-	    <div class="d-flex align-items-center justify-content-center text-center">
-
-	      <div class="search-bar">
-	        <%= form_tag pokemons_path, method: :get do %>
-	          <%= text_field_tag :query,
-	            params[:query],
-	            class: "form-control",
-	            placeholder: "Search for a pokémon, type, location, etc.."
-	          %>
-	      </div>
-
-	      <div>
-	        <%= submit_tag "Gotcha!", class: "btn btn-info" %>
-	      </div>
-	      <% end %>
-	    </div>
-
-	    <div id="pokedex-button"><p><%= link_to "Start Your Pokedex now!", new_pokedex_path, class: "text-center btn red-button big-button" %></p></div>
 
 
-	 </div>
 
-</div>
-
-
-<h2 class="text-center"> Find the right Pokémon, Type or Move for your Team! </h2>
-<div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1549588246-9a455c9c788c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)">
-    <%= link_to pokemons_path, :controller => "pokemons", :query => "Pokémons"%>
-  </div>
+<div class="container" id="banner-home">
 
 
- <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1549588246-9a455c9c788c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)">
-    <%= link_to types_path, :controller => "types", :query => "Types"%>
-  </div>
+	<div class= "d-flex" >
+		
+		<div class="text-center" id="sacha-home"><%= image_tag 'sacha.png', id:"sacha" %></div>	
+	    	
+		<div class="text-center" id="search-home">
+
+			<h1 >Welcome to PokéMaster!</h1>
+
+		    <div class="d-flex align-items-center justify-content-center text-center" style="margin: 20px 0 20px 0">
+
+		      <div class="search-bar">
+		        <%= form_tag pokemons_path, method: :get do %>
+		          <%= text_field_tag :query,
+		            params[:query],
+		            class: "form-control",
+		            placeholder: "Search for a pokémon, type, location, etc.."
+		          %>
+		      </div>
+
+		      <div>
+		        <%= submit_tag "Gotcha!", class: "btn btn-info" %>
+		      </div>
+		      <% end %>
+		    </div>	
+
+		    	<p class="text-center" id="or">Or</p>
+
+		    <div id="pokedex-button"><p><%= link_to "Start Your Pokedex", new_pokedex_path, class: "text-center btn second-button big-button" %></p></div>
 
 
-   <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1549588246-9a455c9c788c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)">
-    <%= link_to moves_path, :controller => "moves", :query => "Moves"%>
-  </div>
- </div>
+		 </div>
 
+	</div>
+
+	<div class= "section">
+<!-- 		<h2 > Find the right Pokémon, Type or Move for your Team! </h2>
+ -->
+		<div class="card-home">
+			<h3>Pokémons</h3>
+				  <div class="card-category" style="background-image: url(https://www.n3rdabl3.com/wp-content/images/uploads/2016/02/pokemon.jpg)">
+				    <%= link_to "", pokemons_path, :controller => "pokemons"%>
+				  </div>
+		</div>
+
+		<div class="card-home">
+					<h3>Types</h3>
+				 <div class="card-category" style="background-image: url(https://i.pinimg.com/originals/51/75/e5/5175e5d17f6a1b5dafc30a803be61834.png)">
+				    <%= link_to "", types_path, :controller => "types"%>
+				  </div>
+		</div>
+
+		<div class="card-home">
+			<h3>Moves</h3>
+				   <div class="card-category" style="background-image: url(https://fsmedia.imgix.net/b2/31/c6/1a/e1a1/4793/bb33/0c9952f4a516/swshsirfetchdpng.png?auto=format%2Ccompress&dpr=2&w=650)">
+				    <%= link_to "", attacks_path, :controller => "attacks"%>
+				  </div>
+		</div>
+
+	</div>
+	<br>
 </div>

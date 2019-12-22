@@ -44,6 +44,16 @@ background-color: white;
 color: $dark-red;
 }
 
+.second-button{
+background-color: $dark-red;
+color: white;
+}
+
+.second-button:hover {
+background-color: $yellow;
+color: $dark-gray;
+}
+
 .outline-button {
 background-color: white;
 border: solid 2px $dark-gray;
@@ -52,56 +62,46 @@ font-weight: bold
 }
 
 .outline-button:hover {
-	background-color: $dark-gray;
-	color: $white;
+background-color: $dark-gray;
+color: $white;
 }
 
 .large-button{
 width: 100%
 }
 
-.big-button{
-width: 50%;
-height: 60px;
-display: inline-block;
- margin: 0 auto;
- padding: 0;
- display: inline-block;
- line-height: 50px;
- text-align: center;
 
-}
 .big-button{
 text-align: center;
 vertical-align: middle
 }
 
 .main-color{
-	background-color: white ;
-	color: $dark-gray !important;
+background-color: white ;
+color: $dark-gray !important;
 }
 
 .main-color:hover{
-	background-color:  #B1485B;
-	color: white !important;
+background-color:  #B1485B;
+color: white !important;
 }
 
 .main-color-two{
 	// background-color: white ;
 	// outline: 1px solid $dark-red;
-	color: $dark-gray !important;
+color: $dark-gray !important;
 }
 
 .main-color-two:hover{
 	// background-color:  #B1485B;
-	color: $dark-red !important;
+color: $dark-red !important;
 }
 
 #login-button {
-	color: white;
-	font-weight: bold
+color: white;
+font-weight: bold
 }
 
 #login-button:hover {
-	color: $yellow;
+color: $yellow;
 }
