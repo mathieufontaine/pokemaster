@@ -59,38 +59,68 @@
     <tbody>
         <tr>
           <th>Type</th>
-            <td><%=@pokemon.type.name.capitalize %></td>
+            <td class="text-center"><%=@pokemon.type.name.capitalize %></td>
         </tr>
         <tr>
           <th>Power Score</th>
-            <td><%= @pokemon.total %></td>
+            <td class="text-center"><strong><%= @pokemon.total %></strong></td>
         </tr>
         <tr>
           <th>HP</th>
-            <td><%= @pokemon.HP%></td>
+            <td class="text-center">
+              <div class="progress">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: <%= @pokemon.HP %>%" aria-valuenow="<%= @pokemon.HP %>" aria-valuemin="0" aria-valuemax="150"></div>
+              </div>
+              <%= @pokemon.HP%> HP
+            </td>
         </tr>
           <th>Attack</th>
-            <td><%= @pokemon.attack %></td>
+            <td class="text-center">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= (@pokemon.attack)/1.5 %>%" aria-valuenow="<%= @pokemon.attack %>" aria-valuemin="0" aria-valuemax="150"></div>
+              </div>
+              <%= @pokemon.attack %>
+            </td>
         </tr>
-        </tr>
+        <tr>
           <th>Defense</th>
-            <td><%= @pokemon.defense %></td>
+            <td class="text-center">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= (@pokemon.defense)/1.5 %>%" aria-valuenow="<%= @pokemon.defense %>" aria-valuemin="0" aria-valuemax="150"></div>
+              </div>
+              <%= @pokemon.defense %>
+            </td>
         </tr>
-        </tr>
+        <tr>
           <th>Sp. Atk</th>
-            <td><%= @pokemon.special_attack %></td>
+            <td class="text-center">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= (@pokemon.special_attack)/1.5 %>%" aria-valuenow="<%= @pokemon.special_attack %>" aria-valuemin="0" aria-valuemax="150"></div>
+              </div>
+              <%= @pokemon.special_attack %>
+            </td>
         </tr>
-        </tr>
+        <tr>
           <th>Sp. Def</th>
-            <td><%= @pokemon.special_attack %></td>
+            <td class="text-center">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= (@pokemon.special_defense)/1.5 %>%" aria-valuenow="<%= @pokemon.special_defense %>" aria-valuemin="0" aria-valuemax="150"></div>
+              </div>
+              <%= @pokemon.special_defense %>
+            </td>
         </tr>
-        </tr>
+        <tr>
           <th>Speed</th>
-            <td><%= @pokemon.speed%></td>
+            <td class="text-center">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= (@pokemon.speed)/1.5 %>%" aria-valuenow="<%= @pokemon.speed %>" aria-valuemin="0" aria-valuemax="150"></div>
+              </div>
+              <%= @pokemon.speed %>
+            </td>
         </tr>
         <tr>
           <th>Location</th>
-            <td><%=@pokemon.location%></td>
+            <td class="text-center"><%=@pokemon.location%></td>
         </tr>
 <!--         <tr>
           <th>Height</th>

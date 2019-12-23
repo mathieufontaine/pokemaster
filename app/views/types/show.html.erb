@@ -112,7 +112,7 @@
 	        <th class ="text-center" scope="col">Weight</th> -->
 	        <th class ="text-center" scope="col">Power Score</th>  
 	        <th class ="text-center" scope="col">Location</th>  
-	    <% if user_signed_in? && current_user.pokedex.present?%>
+	    <% if user_signed_in? %>
 	    <th class ="text-center" scope="col">Add to my Pokédex</th>
 	     <% end %>
 		 </tr>
@@ -144,7 +144,7 @@
 
 	<h2>Moves</h2>
 
-	<table class="table storable">
+	<table class="table sortable">
 
 	    <% case @type.name %>
 		<% when "bug" %>

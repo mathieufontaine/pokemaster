@@ -21,14 +21,18 @@ text-decoration: none
 
 .table tbody td, .table tbody th{
   vertical-align: middle;
-  background-color: white
+  background-color: white;
+}
+
+.table .text-center {
+  text-align: center
 }
 
 .table{
 	color: $dark-gray
 }
 
-#table-profile tbody td,#table-profile tbody th{
+#table-profile tbody td, #table-profile tbody th{
   background: none
 }
 
