@@ -1,10 +1,11 @@
 
 
+<div id="banner-home">
 
-<div class="container" id="banner-home">
+<div class="container" id="container-banner">
 
 
-	<div class= "d-flex" >
+	<div class= "d-flex">
 		
 		<div class="text-center" id="sacha-home"><%= image_tag 'sacha.png', id:"sacha" %></div>	
 	    	
@@ -35,33 +36,41 @@
 
 
 		 </div>
-
 	</div>
+</div>
+</div>
 
-	<div class= "section">
+<div class= "section">
 <!-- 		<h2 > Find the right Pokémon, Type or Move for your Team! </h2>
  -->
-		<div class="card-home">
+<div class="container-home">
+
+
+ 	 <%= link_to pokemons_path do%>
+		<div class="card-home" id="card1">
 			<h3>Pokémons</h3>
-				  <div class="card-category" style="background-image: url(https://www.n3rdabl3.com/wp-content/images/uploads/2016/02/pokemon.jpg)">
-				    <%= link_to "", pokemons_path, :controller => "pokemons"%>
-				  </div>
+		    <div class="card-category" id="cards-pokemons" style="background-image: url(https://cdn.custom-cursor.com/collections/pokemon.png)">
+		    </div>
 		</div>
+	<% end %>
 
-		<div class="card-home">
-					<h3>Types</h3>
-				 <div class="card-category" style="background-image: url(https://i.pinimg.com/originals/51/75/e5/5175e5d17f6a1b5dafc30a803be61834.png)">
-				    <%= link_to "", types_path, :controller => "types"%>
-				  </div>
-		</div>
-
-		<div class="card-home">
+	<%= link_to attacks_path do%>
+		<div class="card-home" id="card2">
 			<h3>Moves</h3>
-				   <div class="card-category" style="background-image: url(https://fsmedia.imgix.net/b2/31/c6/1a/e1a1/4793/bb33/0c9952f4a516/swshsirfetchdpng.png?auto=format%2Ccompress&dpr=2&w=650)">
-				    <%= link_to "", attacks_path, :controller => "attacks"%>
-				  </div>
+		    <div class="card-category" style="background-image: url(https://fsmedia.imgix.net/b2/31/c6/1a/e1a1/4793/bb33/0c9952f4a516/swshsirfetchdpng.png?auto=format%2Ccompress&dpr=2&w=650)">
+		    </div>
 		</div>
+	<% end %>
+
+	<%= link_to types_path do%>
+		<div class="card-home" id="card3">
+			<h3>Types</h3>
+		    <div class="card-category" style="background-image: url(https://i.pinimg.com/originals/51/75/e5/5175e5d17f6a1b5dafc30a803be61834.png)">
+		    </div>
+		</div>
+	<% end %>
 
 	</div>
 	<br>
+</div>
 </div>
