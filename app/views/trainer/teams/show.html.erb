@@ -8,7 +8,7 @@
     <div class="d-flex justify-content-between align-items-center">
     <h4 class= "mt-2"> Number of Pokémons: <strong><%= @team.pokemons.size %> Pokémons </strong></h4>
       <% if @team.is_trainer?(current_user) %>
-      <%= link_to 'Add more Pokémons', trainer_pokedex_path(current_user,@pokedex), class: "btn btn-success" %>
+      <%= link_to 'Add more Pokémons', pokedex_path(current_user.pokedex.id), class: "btn btn-success" %>
       <% end %>
 </div>
 

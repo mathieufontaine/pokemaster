@@ -29,7 +29,7 @@
     <th class ="text-center" scope="col">Weight</th> -->
     <th class ="text-center" scope="col">Points</th>  
     <th class ="text-center" scope="col">Location</th>  
-      <% if user_signed_in? %>
+      <% if @pokedex.is_trainer?(current_user) %>
         <th class ="text-center" scope="col">Add to a Team</th>
       <% end %>
       </tr>
