@@ -29,6 +29,7 @@
         <tr>
           <th scope="row"><%=pokemon.id%></th>
           <td><%= link_to pokemon.name, pokemon_path(pokemon.id) %></td>
+          <%=link_to pokemon.type.name.capitalize, type_path(pokemon.type) do%>
           <% case pokemon.type.name %>
             <% when "bug" %>
               <td class ="text-center type-header" id = "bug-header">
@@ -69,7 +70,8 @@
             <%else%>
               <td class ="text-center">
             <% end %>
-            <%=link_to pokemon.type.name.capitalize, type_path(pokemon.type)%></td>
+            <% end %>
+            </td>
     <!--  <td class ="text-center"><%=(pokemon.height)%> m</td>
           <td class ="text-center"><%=(pokemon.weight)%> kg</td> -->
           <td class ="text-center"><%=pokemon.total%></td>
