@@ -100,15 +100,15 @@
 
     <div class="mb-3">
       <% if @pokedex.is_trainer?(current_user) && current_user.teams.any?%>
-        <%= link_to "See my Teams", trainer_teams_path(@trainer), class: "nav-link btn outline-button" %>
+        <%= link_to "See my Teams", trainer_pokedex_teams_path(@trainer), class: "nav-link btn outline-button" %>
       <%end%>
     </div>
 
     <div class="mb-2">
       <% if @pokedex.is_trainer?(current_user) && !current_user.teams.any?%>
-        <%= link_to "Create My first Team now!", new_trainer_team_path, class: "nav-link btn red-button large-button" %>
+        <%= link_to "Create My first Team now!", new_trainer_pokedex_team_path, class: "nav-link btn red-button large-button" %>
       <% elsif @pokedex.is_trainer?(current_user)%>
-        <%= link_to "Create a new Team", new_trainer_team_path, class: "nav-link btn outline-button" %>
+        <%= link_to "Create a new Team", new_trainer_pokedex_team_path, class: "nav-link btn outline-button" %>
       <%end%>
     </div> 
 

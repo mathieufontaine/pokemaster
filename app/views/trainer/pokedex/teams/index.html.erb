@@ -11,7 +11,7 @@
 		<thead class="thead dark-gray-header"  id = "sticky-header">
 	  <tr>
 	    <th scope="col">#</th>
-	    <th class= "text-center" scope="col">Pokédex</th>  
+	    <th class= "text-center" scope="col">Team</th>  
 	    <th class= "text-center" scope="col">Number of Pokémons</th>
 	    <th class= "text-center" scope="col">Power Score</th>
 	    <th class= "text-center" scope="col">Date of creation</th>
@@ -20,7 +20,7 @@
 	  <% @teams.each do |team| %>
 	    <tr>
 	      <th scope="row"><%=team.id%></th>
-	      <td class= "text-center"><%= link_to team.name, trainer_team_path(team.id) %></td>
+	      <td class= "text-center"><%= link_to team.name, trainer_pokedex_team_path(team.id) %></td>
 	      <td class= "text-center"><% if team.pokemons.present? %><%= team.pokemons.size %><% else %><%= 0 %><% end %></td> 
 	      <td class= "text-center"><% if team.pokemons.present? %><%= @total_power %><% else %><%= 0 %><% end %></td>
 	      <td class= "text-center"><%= team.created_at %></td>
@@ -30,9 +30,9 @@
 
 	<div class="mb-2">
 	  <% if !current_user.teams.any?%>
-	    <%= link_to "Create My first Team now!", new_trainer_team_path, class: "nav-link btn red-button large-button" %>
+	    <%= link_to "Create My first Team now!", new_trainer_pokedex_team_path, class: "nav-link btn red-button large-button" %>
 	  <% else%>
-	    <%= link_to "Create a new Team", new_trainer_team_path, class: "nav-link btn outline-button" %>
+	    <%= link_to "Create a new Team", new_trainer_pokedex_team_path, class: "nav-link btn outline-button" %>
 	  <%end%>
 	</div> 
 
