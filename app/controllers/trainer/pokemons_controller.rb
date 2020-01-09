@@ -13,16 +13,17 @@ class Trainer::PokemonsController < ApplicationController
   end
 
   def destroy
-    @pokemon = Pokemon.find(params[:pokemon_id])
-    authorize @pokedex
-    @pokedex.pokemon.destroy
+    @pokedex = current_user.pokedex
+    @pokemon = @pokedex.pokemons.find(params[:id])
+    # authorize @pokedex
+    @pokedex.pokemons.destroy(params[:id])
     redirect_to pokedex_path(@pokedex), notice: "#{@pokemon.name} has been removed from your Pokédex"
   end
 
 private
 
   def set_pokedex
-    @pokedex = Pokedex.find(params[:pokedex_id])
+    @pokedex = current_user.pokedex
     authorize @pokedex
   end
 

@@ -2,7 +2,7 @@
 
     <div class="d-flex justify-content-between align-items-center">
       <h1><strong>#</strong><%=@team.id%>. <%= @team.name %></h1>
-      <% if @team.is_trainer?(current_user) %>
+      <% if @team.is_trainer?(current_user) && @team.pokemons.size < 6%>
       <%= link_to 'Add more Pokémons', pokedex_path(current_user.pokedex.id), class: "btn btn-success" %>
       <% end %>
     </div>

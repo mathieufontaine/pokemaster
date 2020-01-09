@@ -28,9 +28,9 @@
 <!--     <th class ="text-center" scope="col">Height</th>
     <th class ="text-center" scope="col">Weight</th> -->
     <th class ="text-center" scope="col">Points</th>  
-    <th class ="text-center" scope="col">Location</th>  
       <% if @pokedex.is_trainer?(current_user) %>
         <th class ="text-center" scope="col">Add to a Team</th>
+        <th class ="text-center" scope="col">Remove</th>
       <% end %>
       </tr>
     </thead>
@@ -82,7 +82,6 @@
     <!--  <td class ="text-center"><%=(pokemon.height)%> m</td>
           <td class ="text-center"><%=(pokemon.weight)%> kg</td> -->
           <td class ="text-center"><%=pokemon.total%></td>
-          <td class ="text-center"><%=pokemon.location%></td>
           <% if @pokedex.is_trainer?(current_user) && current_user.teams.any?%>
             <% if current_user.teams.first.pokemons.include?(pokemon)%>
               <td scope="col-3" class ="text-center"><%=link_to current_user.teams.first.name, trainer_pokedex_team_path(current_user.teams.first.id)%></td>
@@ -91,6 +90,9 @@
                   <%= link_to "+", trainer_team_pokemon_path(current_user.teams.first.id, pokemon.id), method: :post ,class:"btn btn-primary"%></td>
             <%end%>
           <%end%>
+          <% if @pokedex.is_trainer?(current_user)%>
+            <td scope="col-3" class ="text-center"><%= link_to '❌', trainer_pokedex_pokemon_path(@pokedex, pokemon.id), method: :delete, data: { confirm: "Are you sure you want to remove #{pokemon.name} from your pokedex?" } %></td>
+            <%end%>
         </tr>
       <%end%>
     </table>

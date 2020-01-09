@@ -3,6 +3,9 @@ class Pokedex < ApplicationRecord
 	# has_many :teams
 	has_and_belongs_to_many :pokemons
 
+
+  has_many :teams, dependent: :destroy
+
 	def is_trainer?(user)
 	  self.user == user
 	end
