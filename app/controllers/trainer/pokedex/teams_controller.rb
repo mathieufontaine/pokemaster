@@ -1,4 +1,4 @@
-class Trainer::TeamsController < ApplicationController
+class Trainer::Pokedex::TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :skip_authorization
 
@@ -12,7 +12,7 @@ class Trainer::TeamsController < ApplicationController
 
   def show
     @pokemons = policy_scope(Pokemon).where(team: @team)
-    # @total_power = team_power(@team)
+    @total_power = team_power(@team)
   end
 
   def new
