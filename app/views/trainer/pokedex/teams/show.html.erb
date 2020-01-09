@@ -60,7 +60,8 @@
             <% end %>
             <%= pokemon.type.name.capitalize%></p>
     <p class="card-text"><%=pokemon.total%> points</p>
-    <%= link_to "see stats", pokemon_path(pokemon.id), class: "btn" %>
+    <%= link_to "Details", pokemon_path(pokemon.id), class: "btn" %>
+    <%= link_to "Remove", trainer_pokedex_team_pokemon_path(@team, pokemon.id), method: :delete, data: { confirm: "Are you sure you want to remove #{pokemon.name} from your team?" }, class: 'btn'%>
   </div>
 </div>
 <%end%>

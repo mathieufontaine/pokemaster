@@ -85,7 +85,7 @@
           <td class ="text-center"><%=pokemon.location%></td>
           <% if @pokedex.is_trainer?(current_user) && current_user.teams.any?%>
             <% if current_user.teams.first.pokemons.include?(pokemon)%>
-              <td scope="col-3" class ="text-center"><%= "Team 1"%></td>
+              <td scope="col-3" class ="text-center"><%=link_to current_user.teams.first.name, trainer_pokedex_team_path(current_user.teams.first.id)%></td>
             <% else%>
               <td scope="col-3" class="text-center plus-column">
                   <%= link_to "+", trainer_team_pokemon_path(current_user.teams.first.id, pokemon.id), method: :post ,class:"btn btn-primary"%></td>

@@ -13,10 +13,10 @@ class Trainer::Pokedex::PokemonsController < ApplicationController
   end
 
   def destroy
-    @pokemon = Pokemon.find(params[:pokemon_id])
+    @pokemon = Pokemon.find(params[:id])
     authorize @team
-    @team.pokemon.destroy
-    redirect_to team_path(@team), notice: "#{@pokemon.name} has been removed from your team"
+    @pokemon.destroy
+    redirect_to trainer_pokedex_team_path(@team), notice: "#{@pokemon.name} has been removed from your team"
   end
 
 private
