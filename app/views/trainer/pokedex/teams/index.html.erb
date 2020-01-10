@@ -1,32 +1,98 @@
-<div class = "container">
-	<div class="d-flex justify-content-between">
-		<h1> My Teams </h1>
-<!-- 		<div class="d-flex justify-content-end">
-			<p ><%=cl_image_tag @teams.first.user.avatar, class: "avatar dropdown-toggle"%></p>
-			<h2><%=@teams.first.user.username%></h2>
-		</div> -->
+
+
+<div class= "container">
+
+<div class="d-flex justify-content-between">
+	<h1> My Teams </h1>
+</div>
+
+<% if current_user.teams.any?%>
+<% @teams.each do |team| %>
+
+<div class = "mb-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <h3><strong>#</strong><%=team.id%>. <%=link_to team.name, trainer_pokedex_team_path(team.id) %></h1>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+    	<h4 class= "mb-2">
+    		Number of Pokémons: <strong>
+    			<% if team.pokemons.present? %><%= team.pokemons.size %> 
+    			<% else %><%= 0 %>
+    			<% end %>
+    	</strong></h4>
+    	<h4 class= "mb-2">
+    		 Team Power: <strong>
+    		 	<% if team.pokemons.present? %><%= @total_power %> 
+    			<% else %><%= 0 %>
+    			<% end %>
+    	</strong> points</h4>
 	</div>
 
-	<table class="table sortable">
-		<thead class="thead dark-gray-header"  id = "sticky-header">
-	  <tr>
-	    <th scope="col">#</th>
-	    <th class= "text-center" scope="col">Team</th>  
-	    <th class= "text-center" scope="col">Number of Pokémons</th>
-	    <th class= "text-center" scope="col">Power Score</th>
-	    <th class= "text-center" scope="col">Date of creation</th>
-	  </tr>
-	</thead>
-	  <% @teams.each do |team| %>
-	    <tr>
-	      <th scope="row"><%=team.id%></th>
-	      <td class= "text-center"><%= link_to team.name, trainer_pokedex_team_path(team.id) %></td>
-	      <td class= "text-center"><% if team.pokemons.present? %><%= team.pokemons.size %><% else %><%= 0 %><% end %></td> 
-	      <td class= "text-center"><% if team.pokemons.present? %><%= @total_power %><% else %><%= 0 %><% end %></td>
-	      <td class= "text-center"><%= team.created_at %></td>
-	    </tr>
-	  <%end%>
-	</table>
+
+
+<div class = "cards">
+<% team.pokemons.each do |pokemon| %>
+<div class="card text-center" style="width: 20rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to pokemon.name, pokemon_path(pokemon.id) %></h5>
+      <% case pokemon.type.name %>
+            <% when "bug" %>
+              <p class ="text-center type-header" id = "bug-header">
+            <% when "dark" %>
+              <p class ="text-center type-header" id = "dark-header">
+            <% when "dragon" %>
+              <p class ="text-center type-header" id = "dragon-header">
+            <% when "electric" %>
+              <p class ="text-center type-header" id = "electric-header">
+            <% when "fairy" %>
+              <p class ="text-center type-header" id = "fairy-header">
+            <% when "fighting" %>
+              <p class ="text-center type-header" id = "fighting-header">
+            <% when "fire" %>
+              <p class ="text-center type-header" id = "fire-header">
+            <% when "flying" %>
+              <p class ="text-center type-header" id = "flying-header">
+            <% when "ghost" %>
+              <p class ="text-center type-header" id = "ghost-header">
+            <% when "grass" %>
+              <p class ="text-center type-header" id = "grass-header">
+            <% when "ground" %>
+              <p class ="text-center type-header" id = "ground-header">
+            <% when "ice" %>
+              <p class ="text-center type-header" id = "ice-header">
+            <% when "normal" %>
+              <p class ="text-center type-header" id = "normal-header">
+            <% when "poison" %>
+              <p class ="text-center type-header" id = "poison-header">
+            <% when "psychic" %>
+              <p class ="text-center type-header" id = "psychic-header">
+            <% when "rock" %>
+              <p class ="text-center type-header" id = "rock-header">
+            <% when "steel" %>
+              <p class ="text-center type-header" id = "steel-header">
+            <% when "water" %>
+              <p class ="text-center type-header" id = "water-header">
+            <%else%>
+              <p class ="text-center">
+            <% end %>
+            <%= pokemon.type.name.capitalize%></p>
+    <p class="card-text"><%=pokemon.total%> points</p>
+    <%= link_to "Details", pokemon_path(pokemon.id), class: "btn" %>
+    <%= link_to "Remove", trainer_pokedex_team_pokemon_path(team, pokemon.id), method: :delete, data: { confirm: "Are you sure you want to remove #{pokemon.name} from your team?" }, class: 'btn'%>
+  </div>
+</div>
+
+<%end%>
+</div>
+
+      <% if team.is_trainer?(current_user) && team.pokemons.size < 6%>
+      	<%= link_to 'Add more Pokémons', pokedex_path(current_user.pokedex.id), class: "btn btn-success large-button" %>
+      <% end %>
+
+  </div>
+<%end%>
+<%end%>
 
 	<div class="mb-2">
 	  <% if !current_user.teams.any?%>
@@ -36,4 +102,5 @@
 	  <%end%>
 	</div> 
 
+<br>
 </div>

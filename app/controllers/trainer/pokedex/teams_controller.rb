@@ -8,6 +8,8 @@ class Trainer::Pokedex::TeamsController < ApplicationController
     # @user = current_user
     @teams = policy_scope(Team).order(:name)
     # authorize(@user)
+    @pokemons = policy_scope(Pokemon).where(team: @team)
+    # @total_power = team_power(@team)
   end
 
   def show

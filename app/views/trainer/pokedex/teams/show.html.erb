@@ -70,3 +70,135 @@
      <p><%= link_to 'Go Back', trainer_pokedex_teams_path(@trainer), class: "btn btn-info" %></p>
 
 </div>
+
+<div class= "container">
+<% @team.pokemons.each do |pokemon| %>
+
+    <% case pokemon.type.name %>
+    <% when "bug" %>
+      <div class= "d-flex justify-content-between" id = "bug-header">
+    <% when "dark" %>
+      <div class= "d-flex justify-content-between" id = "dark-header">
+    <% when "dragon" %>
+      <div class= "d-flex justify-content-between" id = "dragon-header">
+    <% when "electric" %>
+      <div class= "d-flex justify-content-between" id = "electric-header">
+    <% when "fairy" %>
+      <div class= "d-flex justify-content-between" id = "fairy-header">
+    <% when "fighting" %>
+      <div class= "d-flex justify-content-between" id = "fighting-header">
+    <% when "fire" %>
+      <div class= "d-flex justify-content-between" id = "fire-header">
+    <% when "flying" %>
+      <div class= "d-flex justify-content-between" id = "flying-header">
+    <% when "ghost" %>
+      <div class= "d-flex justify-content-between" id = "ghost-header">
+    <% when "grass" %>
+      <div class= "d-flex justify-content-between" id = "grass-header">
+    <% when "ground" %>
+      <div class= "d-flex justify-content-between" id = "ground-header">
+    <% when "ice" %>
+      <div class= "d-flex justify-content-between" id = "ice-header">
+    <% when "normal" %>
+      <div class= "d-flex justify-content-between" id = "normal-header">
+    <% when "poison" %>
+      <div class= "d-flex justify-content-between" id = "poison-header">
+    <% when "psychic" %>
+      <div class= "d-flex justify-content-between" id = "psychic-header">
+    <% when "rock" %>
+      <div class= "d-flex justify-content-between" id = "rock-header">
+    <% when "steel" %>
+      <div class= "d-flex justify-content-between" id = "steel-header">
+    <% when "water" %>
+      <div class= "d-flex justify-content-between" id = "water-header">
+    <%else%>
+      <div class= "d-flex justify-content-between">
+    <% end %>
+
+    <h1 style="color:white"><strong>#</strong><%=pokemon.id%>. <%= pokemon.name %></h1>
+    <div class= "d-flex align-items-center mr-4 mt-3">
+        <% if user_signed_in? && current_user.pokedex.present?%>
+         <% if current_user.pokedex.pokemons.include?(pokemon)%>
+         <p class ="text-center pokeball-show"><%= image_tag "logo.png", class:"embed-responsive-item"%></p>
+        <% else %>
+          <p class="text-center"><%= link_to "Add #{pokemon.name} to my Pokédex",trainer_pokedex_pokemon_path(current_user.pokedex.id, pokemon), method: :post, class: "btn main-button" %></p>
+        <% end %>
+       <%end%>
+    </div>
+
+  </div>
+
+<table class="table">
+    <tbody>
+        <tr>
+          <th>Type</th>
+            <td class="text-center"><%=pokemon.type.name.capitalize %></td>
+        </tr>
+        <tr>
+          <th>Power Score</th>
+            <td class="text-center"><strong><%= pokemon.total %></strong></td>
+        </tr>
+        <tr>
+          <th>HP</th>
+            <td class="text-center">
+              <div class="progress">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: <%= pokemon.HP %>%" aria-valuenow="<%= pokemon.HP %>" aria-valuemin="0" aria-valuemax="150"></div>
+              </div>
+              <%= pokemon.HP%> HP
+            </td>
+        </tr>
+          <th>Attack</th>
+            <td class="text-center">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= (pokemon.attack)/1.5 %>%" aria-valuenow="<%= pokemon.attack %>" aria-valuemin="0" aria-valuemax="150"></div>
+              </div>
+              <%= pokemon.attack %>
+            </td>
+        </tr>
+        <tr>
+          <th>Defense</th>
+            <td class="text-center">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= (pokemon.defense)/1.5 %>%" aria-valuenow="<%= pokemon.defense %>" aria-valuemin="0" aria-valuemax="150"></div>
+              </div>
+              <%= pokemon.defense %>
+            </td>
+        </tr>
+        <tr>
+          <th>Sp. Atk</th>
+            <td class="text-center">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= (pokemon.special_attack)/1.5 %>%" aria-valuenow="<%= pokemon.special_attack %>" aria-valuemin="0" aria-valuemax="150"></div>
+              </div>
+              <%= pokemon.special_attack %>
+            </td>
+        </tr>
+        <tr>
+          <th>Sp. Def</th>
+            <td class="text-center">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= (pokemon.special_defense)/1.5 %>%" aria-valuenow="<%= pokemon.special_defense %>" aria-valuemin="0" aria-valuemax="150"></div>
+              </div>
+              <%= pokemon.special_defense %>
+            </td>
+        </tr>
+        <tr>
+          <th>Speed</th>
+            <td class="text-center">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: <%= (pokemon.speed)/1.5 %>%" aria-valuenow="<%= pokemon.speed %>" aria-valuemin="0" aria-valuemax="150"></div>
+              </div>
+              <%= pokemon.speed %>
+            </td>
+        </tr>
+        <tr>
+          <th>Location</th>
+            <td class="text-center"><%=pokemon.location%></td>
+        </tr>
+    </tbody>
+</table>
+<%end%>
+
+     <p><%= link_to 'Go Back', pokemons_path, class: "btn btn-info" %></p>
+     <br>
+</div>
