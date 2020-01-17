@@ -22,7 +22,7 @@ class Trainer::Pokedex::PokemonsController < ApplicationController
     @pokemon = @team.pokemons.find(params[:id])
     authorize @team
     @team.pokemons.destroy(params[:id])
-    redirect_to trainer_pokedex_team_path(@team), notice: "#{@pokemon.name} has been removed from your team."
+    redirect_to request.referrer, notice: "#{@pokemon.name} has been removed from your team."
   end
 
 private

@@ -8,12 +8,12 @@ class Trainer::PokemonsController < ApplicationController
     @pokedex.pokemons << @pokemon
     authorize @pokedex
     if @pokedex.save
-    redirect_to request.referrer, notice: "Gotcha! #{@pokemon.name} has been added to your Pokédex"
+    redirect_to pokedex_path(@pokedex), notice: "Gotcha! #{@pokemon.name} has been added to your Pokédex"
     end
   end
 
   def destroy
-    @pokedex = current_user.pokedex
+    # @pokedex = current_user.pokedex
     @pokemon = @pokedex.pokemons.find(params[:id])
     # authorize @pokedex
     @pokedex.pokemons.destroy(params[:id])

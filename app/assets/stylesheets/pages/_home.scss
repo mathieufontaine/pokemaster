@@ -180,3 +180,19 @@ color: $white
   // background-color: $dark-gray;
   color: $yellow;
 }
+
+#card4 {
+padding: 30px;
+}
+
+#card4 h5, #card4 h3{
+  color: $dark-gray;
+}
+
+#card4:hover{
+  background-color: $dark-gray;
+}
+
+#card4:hover h5, #card4:hover h3{
+  color: $white;
+}

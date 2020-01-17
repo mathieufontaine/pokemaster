@@ -4,14 +4,13 @@
 
     <div class="d-flex justify-content-between align-items-center">
       <h1><strong>#</strong><%=@pokedex.id%>. <%= @pokedex.name %></h1>
-
       <h2 ><strong>Trainer: <%=@pokedex.user.username%></strong></h2>
     </div>
 
     <div class="d-flex justify-content-between">
       <h4 class= "mb-2"> Pokedex Power: <strong><%= @total_power %></strong> points</h4>
-
     </div>
+
     <div class="d-flex justify-content-between">
       <h4 class= "mt-2"> Number of Pokémons: <strong><%= @pokedex.pokemons.size %> Pokémons </strong></h4>
       <% if @pokedex.is_trainer?(current_user) %>
@@ -27,13 +26,16 @@
         <th class ="text-center" scope="col">Type</th>
 <!--     <th class ="text-center" scope="col">Height</th>
     <th class ="text-center" scope="col">Weight</th> -->
-    <th class ="text-center" scope="col">Points</th>  
-      <% if @pokedex.is_trainer?(current_user) %>
-        <th class ="text-center" scope="col">Add to a Team</th>
-        <th class ="text-center" scope="col">Remove</th>
-      <% end %>
+        <th class ="text-center" scope="col">Points</th>  
+         <% if @pokedex.is_trainer?(current_user) && current_user.teams.any?%>
+          <% current_user.teams.each do |team| %>
+        <th class ="text-center" scope="col" style="background-color:#78C1E7"><%=link_to team.name, trainer_pokedex_team_path(team.id), style:"color:white"%></th>
+          <% end %>
+        <th class ="text-center" scope="col" style="background-color:#B1485B">Release</th>
+         <% end %>
       </tr>
-    </thead>
+      </thead>
+
       <% @pokedex.pokemons.each do |pokemon| %>
         <tr>
           <th scope="row"><%=pokemon.id%></th>
@@ -82,17 +84,26 @@
     <!--  <td class ="text-center"><%=(pokemon.height)%> m</td>
           <td class ="text-center"><%=(pokemon.weight)%> kg</td> -->
           <td class ="text-center"><%=pokemon.total%></td>
+          
           <% if @pokedex.is_trainer?(current_user) && current_user.teams.any?%>
-            <% if current_user.teams.first.pokemons.include?(pokemon)%>
-              <td scope="col-3" class ="text-center"><%=link_to current_user.teams.first.name, trainer_pokedex_team_path(current_user.teams.first.id)%></td>
-            <% else%>
-              <td scope="col-3" class="text-center plus-column">
-                  <%= link_to "+", trainer_team_pokemon_path(current_user.teams.first.id, pokemon.id), method: :post ,class:"btn btn-primary"%></td>
+
+            <% current_user.teams.each do |team| %>
+            <td scope="col-3" class ="text-center" id="pokeball">
+              <% if team.pokemons.include?(pokemon)%> 
+                <%=image_tag "logo.png", class:"embed-responsive-item"%>
+              <% elsif team.pokemons.size < 6%>
+                <%= link_to "+", trainer_team_pokemon_path(team.id, pokemon.id), method: :post ,class:"btn btn-primary"%>  
+              <%end%>
+            </td>
             <%end%>
+
           <%end%>
+
           <% if @pokedex.is_trainer?(current_user)%>
-            <td scope="col-3" class ="text-center"><%= link_to '❌', trainer_pokedex_pokemon_path(@pokedex, pokemon.id), method: :delete, data: { confirm: "Are you sure you want to remove #{pokemon.name} from your pokedex?" } %></td>
-            <%end%>
+            <td scope="col-3" class ="text-center"><%= link_to '-', trainer_pokedex_pokemon_path(@pokedex, pokemon.id), method: :delete, data: { confirm: "Are you sure you want to remove #{pokemon.name} from your pokedex?" }, class:"btn btn-danger"%>
+            </td>
+          <%end%>
+
         </tr>
       <%end%>
     </table>
@@ -100,17 +111,15 @@
 
 
 
-    <div class="mb-3">
+    <div class="mb-2">
       <% if @pokedex.is_trainer?(current_user) && current_user.teams.any?%>
-        <%= link_to "See my Teams", trainer_pokedex_teams_path(@trainer), class: "nav-link btn outline-button" %>
+        <%= link_to "Go to my Teams", trainer_pokedex_teams_path(@trainer), class: "nav-link btn outline-button" %>
       <%end%>
     </div>
 
     <div class="mb-2">
       <% if @pokedex.is_trainer?(current_user) && !current_user.teams.any?%>
         <%= link_to "Create My first Team now!", new_trainer_pokedex_team_path, class: "nav-link btn red-button large-button" %>
-      <% elsif @pokedex.is_trainer?(current_user)%>
-        <%= link_to "Create a new Team", new_trainer_pokedex_team_path, class: "nav-link btn outline-button" %>
       <%end%>
     </div> 
 

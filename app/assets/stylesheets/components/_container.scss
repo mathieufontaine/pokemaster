@@ -7,6 +7,10 @@ body{
  color: $dark-gray;
 }
 
+a:hover {
+text-decoration: none
+}
+
 .container {
 	// background-color: white;
   background-color: rgba(255,255,255,0.94);
@@ -16,9 +20,17 @@ body{
   padding: 0px 30px
 }
 
+.container-teams {
+  padding: 0px 0px
+}
+
 .container h1{
 	padding: 30px;
 	color: #353A40
+}
+
+.container h3 a{
+  color: #353A40
 }
 
 .container-home {
@@ -42,3 +54,4 @@ margin: 0px 0px;
 padding-top: 50px;
 height: 100vh
 }
+

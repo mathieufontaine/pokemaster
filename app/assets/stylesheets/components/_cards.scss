@@ -6,3 +6,17 @@
   padding: 16px;
   z-index: -10
 }
+
+.cards h5 a{
+  color: #353A40;
+  font-weight: bold
+ }
+
+#cards-index {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  padding: 10px;
+  z-index: -10
+}
